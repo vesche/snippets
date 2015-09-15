@@ -1,4 +1,6 @@
-letters = 'abcdefghijklmnopqrstuvwxyz'
+import string
+
+letters = string.ascii_lowercase
 cases = input()
 for i in range(cases):
     word = raw_input()

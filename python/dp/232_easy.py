@@ -9,8 +9,6 @@ for i in range(input()):
 		if letter in alpha:
 			s += letter
 
-print s
-print s[::-1]
 if s == s[::-1]:
 	print "Palindrome"
 else:
