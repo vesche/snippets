@@ -1,7 +1,8 @@
 #!/usr/bin/python
 
-# autocapstone v0.1 - Austin Jackson
-# Given a url, attempts to automate the five-phase offensive methodology process.
+# autocapstone v0.2 - Austin Jackson
+# Given a url, attempts to automate the first two phases of the offensive
+# methodology process taught in the OMA course.
 
 import json
 import os
@@ -84,20 +85,20 @@ with open('zonetransfer.txt') as f:
 print '\n------SCANNING-&-ENUMERATION------'
 
 # Gather IPs
-#hosts = []
-#subnet = '.'.join(web_ip.split('.')[0:3]) + '.0/24'
-#print 'Performing probe scan...'
-#write_cmd('nmap -sP '+subnet, 'nmap_probe')
-#with open('nmap_probe.txt') as f:
-#    for line in f.readlines():
-#        if 'Nmap scan report' in line:
-#            hosts.append(line.split()[-1])
+hosts = []
+subnet = '.'.join(web_ip.split('.')[0:3]) + '.0/24'
+print 'Performing probe scan...'
+write_cmd('nmap -sP '+subnet, 'nmap_probe')
+with open('nmap_probe.txt') as f:
+    for line in f.readlines():
+        if 'Nmap scan report' in line:
+            hosts.append(line.split()[-1])
 
 # host scanning
-#print 'Agressively scanning hosts...'
-#for host in hosts:
-#    print 'Scanning', host
-#    write_cmd('nmap -A '+host, 'nmap_'+host)
+print 'Agressively scanning hosts...'
+for host in hosts:
+    print 'Scanning', host
+    write_cmd('nmap -A '+host, 'nmap_'+host)
 
 # Get mail server IP
 with open('zonetransfer.txt') as f:
@@ -172,11 +173,6 @@ for x in beef_data:
     with open('{0}_browser.txt'.format(x[1]), 'r') as f:
         browser_data = json.load(f)
     print x[1], 'using', browser_data['BrowserName'], browser_data['BrowserVersion']
-
-
-#print '\n----------GAINING-ACCESS----------'
-#print '\n---------EXPANDING-ACCESS---------'
-#print '\n--------SUSTAINING-ACCESS---------'
 
 
 print '----------------------------------'
