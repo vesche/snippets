@@ -42,7 +42,7 @@ void game() {
         else if (move == 's' && pos < 6)
             pos += 3;
         else if (move == 'e' && pos != 2 && pos != 5 && pos != 8)
-                pos += 1;
+            pos += 1;
         else if (move == 'w' && pos != 0 && pos != 3 && pos != 6)
             pos -= 1;
         else if (move == 'h')
