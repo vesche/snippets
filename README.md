@@ -2,5 +2,6 @@
 Stray code that has no home.  
 Folder seperated by language.  
   
-[dailyprogrammer](https://www.reddit.com/r/dailyprogrammer)  
-[hackerrank](https://www.hackerrank.com/)
+[Advent of Code](adventofcode.com)
+[/r/dailyprogrammer](https://www.reddit.com/r/dailyprogrammer)  
+[HackerRank](https://www.hackerrank.com/)
