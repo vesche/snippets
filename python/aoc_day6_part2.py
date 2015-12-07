@@ -31,7 +31,7 @@ if __name__ == "__main__":
                 c, d = i[3].split(',')
                 lights(update, a, b, c, d)
 
-brightness = 0
-for i in coords:
-    brightness += coords[i]
-print brightness
+    brightness = 0
+    for i in coords:
+        brightness += coords[i]
+    print brightness

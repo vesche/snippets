@@ -33,8 +33,8 @@ if __name__ == "__main__":
                 c, d = i[3].split(',')
                 lights(update, a, b, c, d)
 
-count_on = 0
-for i in coords:
-    if coords[i] == 'on':
-        count_on += 1
-print count_on
+    count_on = 0
+    for i in coords:
+        if coords[i] == 'on':
+            count_on += 1
+    print count_on
