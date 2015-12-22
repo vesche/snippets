@@ -1,1 +1,0 @@
-from PIL import Image;import numpy as n;c,m=n.asarray(list(' .,:;irsXA253hMHGS#9B&@')),Image.open("p");s=(round(m.size[0]*.035),round(m.size[1]*.02));m=n.sum(n.asarray(m.resize(s)),2);m=(1-m/m.max())*23;print("\n".join(("".join(_) for _ in c[m.astype(int)])))
