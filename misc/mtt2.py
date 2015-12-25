@@ -2,16 +2,18 @@
 
 import re
 import requests
+import subprocess
 import sys
 from bs4 import BeautifulSoup
 
 token_pattern = re.compile(r'var token_key="(.*?)";')
+usage_text = './mtt.py <movie title>'
 
 if __name__ == "__main__":
     try:
         title = ' '.join(sys.argv[1:])
     except:
-        print "./mtt.py <movie title>"
+        print usage_text
         sys.exit(0)
 
     with requests.Session() as session:
@@ -51,6 +53,7 @@ if __name__ == "__main__":
         for i in range(len(movie_links)):
             movie_name = movie_links[i]
             print '{0}. {1}'.format(i+1, ' '.join(movie_name.split('-')[1:]))
+
         movie_numb = input("Which movie (#)? ")
 
         response = session.get("http://movietv.to/{}".format(movie_links[movie_numb-1]))
@@ -59,4 +62,6 @@ if __name__ == "__main__":
         for link in soup.find_all('source'):
             movie_link = link.get('src')
 
-        print '&'.join(movie_link.split('&')[:2])
+        c_link = '&'.join(movie_link.split('&')[:2])
+
+        subprocess.Popen(['vlc', c_link])
