@@ -15,7 +15,8 @@ if __name__ == "__main__":
         sys.exit(0)
 
     with requests.Session() as session:
-        session.headers = {"User-Agent": "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"}
+        session.headers = {"User-Agent": "Mozilla/5.0 (X11; Ubuntu; \
+        Linux x86_64; rv:42.0) Gecko/20100101 Firefox/42.0"}
 
         # extract token
         response = session.get("http://movietv.to/")
@@ -43,7 +44,19 @@ if __name__ == "__main__":
 
         soup = BeautifulSoup(response.content, "html.parser")
 
-        for movie in soup.select("div.item"):
-            title = movie.find("h2", class_="movie-title")
+        movie_links = []
+        for link in soup.find_all('a'):
+            movie_links.append(link.get('href'))
 
-            print title.get_text()
+        for i in range(len(movie_links)):
+            movie_name = movie_links[i]
+            print '{0}. {1}'.format(i+1, ' '.join(movie_name.split('-')[1:]))
+        movie_numb = input("Which movie (#)? ")
+
+        response = session.get("http://movietv.to/{}".format(movie_links[movie_numb-1]))
+        soup = BeautifulSoup(response.content, "html.parser")
+
+        for link in soup.find_all('source'):
+            movie_link = link.get('src')
+
+        print '&'.join(movie_link.split('&')[:2])
