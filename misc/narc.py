@@ -1,7 +1,8 @@
 def narc_test(n):
     digits = map(int, list(str(n)))
-    if n == sum([_**len(digits) for _ in digits]):
+    if n == sum([i**len(digits) for i in digits]):
         print n,
 
-for n in range(1000000):
-    narc_test(n)
+if __name__ == "__main__":
+    for n in range(1000000):
+        narc_test(n)

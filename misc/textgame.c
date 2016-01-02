@@ -1,3 +1,5 @@
+/* Concept game for C beginners */
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -26,16 +28,16 @@ void game() {
     for (;;) {
         /* set player location */
         map[pos] = '*';
-        
+
         /* print game output and prompt */
         game_output(map, message, coins, pos);
         scanf(" %c", &move);
         system("clear");
-        
+
         /* reset player location and message */
         map[pos]    = '_';
         message     = "";
-        
+
         /* player moves */
         if (move == 'n' && pos > 2)
             pos -= 3;
@@ -57,7 +59,7 @@ void game_output(char map[], char message[], int coins, int pos) {
     printf("Coins: %d\n", coins);
     printf(" _____ \n|%c|%c|%c|\n|%c|%c|%c|\n|%c|%c|%c|\n", \
     map[0],map[1],map[2],map[3],map[4],map[5],map[6],map[7],map[8]);
-    
+
     /* print message and room text */
     printf("%s", message);
     if (pos == 0)
@@ -97,7 +99,7 @@ void menu() {
         /* menu prompt */
         printf("> ");
         scanf("%d", &choice);
-        
+
         /* menu choices */
         if (choice == 1)
             break;

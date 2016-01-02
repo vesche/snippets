@@ -22,20 +22,23 @@ def main():
         menu_choice = raw_input('>')
 
         # act on menu choice
-        if menu_choice == '1': game()
-        if menu_choice == '2': raw_input(about_text)
-        if menu_choice == '3': quit()
+        if menu_choice == '1':
+            game()
+        elif menu_choice == '2':
+            raw_input(about_text)
+        elif menu_choice == '3':
+            quit()
 
 def game():
     # define intial variables
-    playing        = True
-    game_map    = ['_', '_', '_', '_', '_', '_', '_', '_', '_']
-    character    = '@'
-    pos            = 4
+    playing     = True
+    game_map    = ['_'] * 9
+    character   = '@'
+    pos         = 4
 
     # get user defined variables
     name = raw_input("\nWhat's your name? ")
-    print "Get ready", name + '!'
+    print "Get ready {}!".format(name)
 
     while playing:
         # clear the screen
@@ -45,37 +48,37 @@ def game():
         game_map[pos] = character
 
         # print map and prompt
-        print 'CMD.EXE ADVENTURE!\n' + name, '- Level 0\n'
+        print 'CMD.EXE ADVENTURE!\n' + '{} - Level 0\n'.format(name)
         print '    ' + ' '.join(game_map[0:3])
         print '    ' + ' '.join(game_map[3:6])
         print '    ' + ' '.join(game_map[6:9])
-        move = raw_input('\n> ')
+        move = raw_input('\n> ').lower()
 
         # reset position
         game_map[pos] = '_'
 
         # act on move
-        if move.upper() == "NORTH":
+        if move == "north":
             if pos <= 2:
                 continue
             pos -= 3
 
-        if move.upper() == "SOUTH":
+        elif move == "south":
             if pos >= 6:
                 continue
             pos += 3
 
-        if move.upper() == "EAST":
+        elif move == "east":
             if pos == 2 or pos == 5 or pos == 8:
                 continue
             pos += 1
 
-        if move.upper() == "WEST":
+        elif move == "west":
             if pos == 0 or pos == 3 or pos == 6:
                 continue
             pos -= 1
 
-        if move.upper() == "QUIT":
+        elif move == "quit":
             playing = False
 
 if __name__ == '__main__':
