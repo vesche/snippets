@@ -1,4 +1,5 @@
-#!/usr/bin/env python2
+#!/usr/bin/env python
+
 import os
 import time
 
@@ -33,7 +34,7 @@ def display(stdin):
 
     for c in stdin:
         p = get_pattern(c)
-        top += " {0} ".format(p[0])
+        top += " {} ".format(p[0])
         mid += "{0}{1}{2}".format(p[1], p[2], p[3])
         bot += "{0}{1}{2}".format(p[4], p[5], p[6])
 

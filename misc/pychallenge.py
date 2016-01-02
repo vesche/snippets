@@ -3,6 +3,7 @@ import urllib2
 import zipfile
 from PIL import Image
 import ImageDraw
+from string import ascii_lowercase
 
 # www.pythonchallenge.com
 
@@ -15,19 +16,19 @@ def levelseven():
 def levelsix():
     z = zipfile.ZipFile('channel.zip')
     li = []
-    
+
     numb = '90052'
     while True:
         try:
-            data = z.read('%s.txt' % numb)
+            data = z.read('{}.txt'.format(numb))
             numb = data.split()[3]
-            li.append(z.getinfo('%s.txt' % numb).comment)
+            li.append(z.getinfo('{}.txt'.format(numb)).comment)
         except:
             print ''.join(li)
             break
 
 def levelfive():
-    data = pickle.load( open('banner.p', 'rb') )
+    data = pickle.load(open('banner.p', 'rb'))
     for i in data:
         line = ''
         for j in i:
@@ -37,7 +38,8 @@ def levelfive():
 def levelfour(numb):
     while True:
         try:
-            response = urllib2.urlopen('http://www.pythonchallenge.com/pc/def/linkedlist.php?nothing=' + str(numb))
+            response = urllib2.urlopen('http://www.pythonchallenge.com\
+            /pc/def/linkedlist.php?nothing={}'.format(str(numb)))
             numb = response.read().split()[5]
             print numb
             response.close()
@@ -70,7 +72,7 @@ def leveltwo(blob):
 
 def rotn(n, blob):
     decrypted = ''
-    letters = 'abcdefghijklmnopqrstuvwxyz'
+    letters = ascii_lowercase
     for i in blob:
         try:
             offset = n + letters.index(i)
@@ -79,7 +81,5 @@ def rotn(n, blob):
             blurp = letters[offset]
         except:
             blurp = i
-    
         decrypted += blurp
-    
     return decrypted
