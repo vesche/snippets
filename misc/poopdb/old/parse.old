@@ -1,0 +1,13 @@
+#!/usr/bin/env python2
+
+import poopapi
+
+parser = argparse.ArgumentParser(description="poopdb command line utility")
+
+parser.add_argument("-d", "--database")
+parser.add_argument("-
+
+args = parser.parse_args()
+
+if args.database:
+    print poopapi.db_query(args.database)
