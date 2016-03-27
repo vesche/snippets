@@ -62,24 +62,7 @@ void game_output(char map[], char message[], int coins, int pos) {
 
     /* print message and room text */
     printf("%s", message);
-    if (pos == 0)
-        printf("Room 0");
-    if (pos == 1)
-        printf("Room 1");
-    if (pos == 2)
-        printf("Room 2");
-    if (pos == 3)
-        printf("Room 3");
-    if (pos == 4)
-        printf("Room 4");
-    if (pos == 5)
-        printf("Room 5");
-    if (pos == 6)
-        printf("Room 6");
-    if (pos == 7)
-        printf("Room 7");
-    if (pos == 8)
-        printf("Room 8");
+    printf("Room %d", pos);
     printf("\n> ");
 }
 
