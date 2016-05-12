@@ -1,9 +1,10 @@
 #
-# This isn't intended to be run, it's a loose guide of how to install arch
-# from a live boot. Enjoy, vesche.
+# This isn't intended to be run, it's a loose guide of how I install arch
+# from a live boot. Might also be of use to someone else. Enjoy, vesche.
+#
 
 ################
-# arch install #
+# live install #
 ################
 
 # update the system clock
@@ -13,16 +14,16 @@ timedatectl set-ntp true
 lsblk
 
 # partion
-parted /dev/sdx
+parted /dev/sdX
     (parted) mklabel msdos
     (parted) mkpart primary ext4 1MiB 100%
     (parted) set 1 boot on
     (parted) quit
 
 # format fs & mount
-lsblk /dev/sdx
-mkfs.ext4 /dev/sdxN
-mount /dev/sdxN /mnt
+lsblk /dev/sdX
+mkfs.ext4 /dev/sdXY
+mount /dev/sdXY /mnt
 
 # install base
 pacstrap -i /mnt base base-devel
@@ -37,7 +38,7 @@ arch-chroot /mnt /bin/bash
 locale-gen
 echo 'LANG=en_US.UTF-8' > /etc/locale.conf
 
-# timezone
+# set timezone
 ln -s /usr/share/zoneinfo/America/New_York /etc/localtime
 hwclock --systohc --utc
 
@@ -49,7 +50,7 @@ pacman -S grub os-prober
 grub-install --recheck /dev/sdx
 grub-mkconfig -o /boot/grub/grub.cfg
 
-# hostname
+# set hostname
 echo 'hostname' > /etc/hostname
 
 # set root password
@@ -61,7 +62,7 @@ umount -R /mnt
 reboot
 
 ################
-# post-install #
+# post install #
 ################
 
 # create user
@@ -80,18 +81,20 @@ sudo systemctl start dhcpcd@eno1.service
 
 # package spam
 sudo pacman -S \
-cmus feh gcc git nano net-tools nitrogen nmap htop openssh profont ranger rtorrent \
-screenfetch scrot tcpreplay tree tmux unzip vim weechat wget yajl youtube-dl \
+cmus feh gcc git nano net-tools nitrogen nmap htop openssh profont ranger \
+rtorrent screenfetch scrot tcpdump tcpreplay tree tmux unzip vim weechat wget \
+yajl youtube-dl \
 python python-pip python-setuptools python2 python2-pip python2-setuptools \
-dmenu firefox vlc wireshark-cli wireshark-qt \
-xf86-video-intel xorg-server xorg-xinit xorg-xrandr bspwm sxhkd dmenu rxvt-unicode \
+dmenu firefox livestreamer vlc wireshark-cli wireshark-qt \
+xf86-video-intel xorg-server xorg-xinit xorg-xrandr bspwm sxhkd dmenu \
+rxvt-unicode \
 
 # yaourt
 mkdir -p ~/tmp/AUR && cd $_
 wget https://aur.archlinux.org/cgit/aur.git/snapshot/package-query.tar.gz
 tar xfz package-query.tar.gz  # unpack tarball
 cd package-query  &&  makepkg  # cd and create package from source
-sudo pacman -U package-query*.pkg.tar.xz  
+sudo pacman -U package-query*.pkg.tar.xz
 cd ~/tmp/AUR
 wget https://aur.archlinux.org/cgit/aur.git/snapshot/yaourt.tar.gz
 tar xzf yaourt.tar.gz
@@ -108,4 +111,3 @@ cp -R dotfiles/.config ~/
 
 # firefox add-ons: imagus, ublock, stylish
 # stylish themes: github, hacker news, reddit, stackoverflow, wikipedia
-
