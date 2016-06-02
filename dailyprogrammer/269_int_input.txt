@@ -1,0 +1,15 @@
+ abcdefghijklm 
+A   \\  /\    n
+B            \o
+C   /         p
+D      \     \q
+E    \        r
+F  /      /   s
+G\  /      \  t
+H     \       u
+I\/           v
+J/            w
+K          \  x
+L    \/       y
+M   /       / z
+ NOPQRSTUVWXYZ 
