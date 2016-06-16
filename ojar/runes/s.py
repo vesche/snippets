@@ -2,7 +2,7 @@
 
 # s rune
 
-def help(string):
+def info(_):
     help_text  = "[s]tring rune\n"
     help_text += "actions: length"
     return help_text

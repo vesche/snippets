@@ -2,12 +2,17 @@
 
 # o rune
 
-def help(s):
-    help_text  = "[o]jar rune\n"
-    help_text += "actions: info, quit"
-    return help_text
+#def clear(_):
+#    from os import system
+#    system('clear')
+#    return ""
 
 def info(_):
+    help_text  = "[o]jar rune\n"
+    help_text += "actions: quit, version"
+    return help_text
+
+def version(_):
     return "ojar v0.0"
 
 def quit(_):
