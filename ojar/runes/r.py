@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 
-# ? rune
+# [r]andom rune
 
 def info(_):
     help_text  = "[r]andom rune\n"
-    help_text += "actions: integer, string"
+    help_text += "actions: number, string"
     return help_text
 
-def integer(string):
+def number(string):
     from random import randint
     x, y = string.split(',')
     return randint(int(x), int(y))

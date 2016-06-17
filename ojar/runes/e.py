@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-# e rune
+# [e]vil rune
 
 def gencc(string):
     from random import choice

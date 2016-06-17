@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-# u rune
+# [u]nit rune
 
 def ftoc(f):
     #from __future__ import division

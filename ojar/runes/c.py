@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-# c rune
+# [c]rypto rune
 
 def info(_):
     help_text  = "[c]rypto rune\n"
@@ -9,5 +9,8 @@ def info(_):
 
 def md5(fpath):
     from hashlib import md5 as getmd5hash
-    return getmd5hash(open(fpath, 'rb').read()).hexdigest()
-    
+    from os import path
+    if path.exists(fpath):
+        return getmd5hash(open(fpath, 'rb').read()).hexdigest()
+    else:
+        return "Invalid path."

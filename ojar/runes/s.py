@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-# s rune
+# [s]tring rune
 
 def info(_):
     help_text  = "[s]tring rune\n"
