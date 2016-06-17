@@ -3,9 +3,8 @@
 # [s]tring rune
 
 def info(_):
-    help_text  = "[s]tring rune\n"
-    help_text += "actions: length"
-    return help_text
+    from common import list_functions
+    return "[s]tring rune\nactions: {}".format(list_functions(__name__))
 
 def length(string):
     return len(string)

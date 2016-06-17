@@ -3,14 +3,13 @@
 # [c]rypto rune
 
 def info(_):
-    help_text  = "[c]rypto rune\n"
-    help_text += "actions: md5"
-    return help_text
+    from common import list_functions
+    return "[c]rypto rune\nactions: {}".format(list_functions(__name__))
 
-def md5(fpath):
+def md5(file_path):
     from hashlib import md5 as getmd5hash
-    from os import path
-    if path.exists(fpath):
-        return getmd5hash(open(fpath, 'rb').read()).hexdigest()
+    from os.path import isfile
+    if isfile(file_path):
+        return getmd5hash(open(file_path, 'rb').read()).hexdigest()
     else:
         return "Invalid path."

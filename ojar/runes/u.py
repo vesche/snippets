@@ -3,10 +3,8 @@
 # [u]nit rune
 
 def ftoc(f):
-    #from __future__ import division
-    return 5/9 * (int(f) - 32)
+    return float(5) / float(9) * (int(f) - 32)
 
 def info(_):
-    help_text  = "[u]nit rune\n"
-    help_text += "actions: ftoc"
-    return help_text
+    from common import list_functions
+    return "[u]nit rune\nactions: {}".format(list_functions(__name__))

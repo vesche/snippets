@@ -3,16 +3,22 @@
 # [r]andom rune
 
 def info(_):
-    help_text  = "[r]andom rune\n"
-    help_text += "actions: number, string"
-    return help_text
+    from common import list_functions
+    return "[r]andom rune\nactions: {}".format(list_functions(__name__))
 
-def number(string):
+def number(raw_string):
     from random import randint
-    x, y = string.split(',')
-    return randint(int(x), int(y))
+    try:
+        x, y = map(int, raw_string.split(','))
+        if x > y: raise
+    except:
+        return "Invalid argument."
+    return randint(x, y)
 
-def string(string):
+def string(raw_string):
     from random import choice, randint
     from string import ascii_lowercase
-    return ''.join([choice(ascii_lowercase) for _ in range(int(string))])
+    if raw_string:
+        return ''.join([choice(ascii_lowercase) for _ in range(int(raw_string))])
+    else:
+        return "Invalid argument."
