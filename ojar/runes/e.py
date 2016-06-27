@@ -5,7 +5,7 @@
 def gencc(n):
     from random import choice
     cards = []
-    for _ in range(int(string)):
+    for _ in range(int(n)):
         card_numbs = ''.join(map(str, [choice(range(0, 9)) for _ in range(16)]))
         cards.append('-'.join([card_numbs[i:i+4] for i in range(0, \
         len(card_numbs), 4)]))

@@ -37,6 +37,7 @@ if __name__ == "__main__":
         # noop
         if command == []:
             continue
+
         # help
         elif command == ['?']:
             print help_text

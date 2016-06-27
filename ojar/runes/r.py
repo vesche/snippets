@@ -16,9 +16,10 @@ def number(raw_string):
     return randint(x, y)
 
 def string(raw_string):
-    from random import choice, randint
+    from random import choice
     from string import ascii_lowercase
-    if raw_string:
-        return ''.join([choice(ascii_lowercase) for _ in range(int(raw_string))])
-    else:
-        return "Invalid argument."
+    try:
+        n = int(raw_string)
+    except:
+        return "Invalid argmuent."
+    return ''.join([choice(ascii_lowercase) for _ in range(n)])
