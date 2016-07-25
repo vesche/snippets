@@ -1,8 +1,7 @@
 #!/usr/bin/env python
 
-# ? rune
+# [?] rune
 
-def help(_):
-    help_text  = "[?] rune\n"
-    help_text += "actions: "
-    return help_text
+def info(_):
+    from common import list_functions
+    return "[?] rune\nactions: {}".format(list_functions(__name__))
