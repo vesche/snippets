@@ -64,7 +64,7 @@ if __name__ == "__main__":
     try:
         ns_ip
         print 'IP of name server found.'
-    except:
+    except NameError:
         print 'Name server could not be found.'
         prompt_stop()
 
@@ -72,7 +72,7 @@ if __name__ == "__main__":
     try:
         write_cmd('dig @{0} {1} AXFR'.format(ns_ip, url), 'zonetransfer')
         print 'Zone Transfer was successful.'
-    except:
+    except NameError:
         print 'Zone Transfer failed.'
         prompt_stop()
 
@@ -153,7 +153,7 @@ if __name__ == "__main__":
 
         # wait until check in
         raw_input("Press ENTER when beef has all browsers reported in!")
-    except:
+    except NameError:
         print "Mail server IP was not found, not attempting spear phishing."
 
     # get hooks from beef

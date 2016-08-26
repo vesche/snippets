@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from string import ascii_lowercase
 
 def main():
@@ -8,13 +10,10 @@ def main():
     with open("05_input.txt", 'r') as f:
         for s in f.read().splitlines():
             nice = True
-
-            # bad pairs
             for pair in bad_pairs:
                 if pair in s:
                     nice = False
 
-            # 3 vowels
             vowel_count = 0
             for letter in s:
                 if letter in vowels:
@@ -22,7 +21,6 @@ def main():
             if vowel_count < 3:
                 nice = False
 
-            # two letters in a row
             count = 0
             for letter in ascii_lowercase:
                 if letter * 2 in s:
@@ -30,7 +28,6 @@ def main():
             if count == 0:
                 nice = False
 
-            # naughty or nice
             if nice:
                 nice_count += 1
 

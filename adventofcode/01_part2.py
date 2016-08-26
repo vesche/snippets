@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 def main():
     final_floor = 0
     moves = 0

@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 def run(li):
     loc = 0
     locations = {0:1}
