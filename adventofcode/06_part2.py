@@ -1,9 +1,11 @@
+#!/usr/bin/env python
+
 def lights(update, a, b, c, d):
     for X in range(int(a), int(c)+1):
         for Y in range(int(b), int(d)+1):
-            if update == 'on':
+            if update == "on":
                 coords[(X,Y)] += 1
-            elif update == 'off':
+            elif update == "off":
                 if coords[(X,Y)] > 0:
                     coords[(X,Y)] -= 1
             else:
@@ -14,7 +16,7 @@ def main():
         for i in f.read().splitlines():
             i = i.split()
 
-            if i[0] == 'turn':
+            if i[0] == "turn":
                 update = i[1]
                 a, b = i[2].split(',')
                 c, d = i[4].split(',')

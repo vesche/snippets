@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import os
 import shutil
 
@@ -53,6 +55,4 @@ def main():
 if __name__ == "__main__":
     signals = {}
     print main()
-
-    # cleanup
     os.remove("tmp.txt")

@@ -15,7 +15,7 @@ the decrypted data, the encryption method could be easily found.
 def display(dec_data, decryption):
     os.system("clear")
     print dec_data
-    raw_input('\nDecryption: {} ---> ENTER TO CONTINUE'.format(decryption))
+    raw_input("\nDecryption: {} ---> ENTER TO CONTINUE".format(decryption))
 
 def run():
     try:
@@ -29,9 +29,9 @@ def run():
 
 if __name__ == "__main__":
     enc_data = run()
-    
-    display(decrypt_base64(enc_data), 'base64')
-    display(decrypt_rotn(enc_data, 13), 'rot13')
-    
+
+    display(decrypt_base64(enc_data), "base64")
+    display(decrypt_rotn(enc_data, 13), "rot13")
+
     for n in range(1,13)[::-1]:
-        display(decrypt_rotn(enc_data, n), 'rot{}'.format(n))
+        display(decrypt_rotn(enc_data, n), "rot{}".format(n))

@@ -19,3 +19,4 @@ def decrypt_rotn(enc_data, n):
             char = i
         dec += char
     return dec
+

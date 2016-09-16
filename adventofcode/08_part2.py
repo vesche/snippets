@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 def main():
     encoded, literal = 0, 0
 

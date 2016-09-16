@@ -1,5 +1,5 @@
 # poopdb
-This is a small, odd little database created for personal use. It isn't finished, currently contains major security flaws, and definitley should not be used for anything serious. Poopdb is a hybrid database/file system. Databases are folders, data within databases are stored in files like `foo.data`. All data is stored in a very simple `key:value` format on seperate lines. Everything lives within `/opt/poopdb`. You can use the database via the cli (poopctl) or api (poopapi).  
+This is a small, odd database created for personal use. It isn't finished, currently contains major security flaws, and definitley should not be used for anything serious. Poopdb is a hybrid database/file system. Databases are folders, data within databases are stored in files like `foo.data`. All data is stored in a very simple `key:value` format on seperate lines. Everything lives within `/opt/poopdb`. You can use the database via the cli (poopctl) or api (poopapi).  
 
 ## get going
 `git clone https://github.com/vesche/poopdb`  

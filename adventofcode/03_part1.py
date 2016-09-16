@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 def main():
     loc = 0
     locations = {0:1}

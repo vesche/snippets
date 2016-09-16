@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 def main():
     literal, actual = 0, 0
 

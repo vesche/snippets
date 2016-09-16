@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from string import ascii_lowercase
 from itertools import product
 
@@ -30,7 +32,6 @@ def bonus2(element):
             pairs.remove(p)
     print pairs
     print "%s -> %s" % (element, str(len(pairs)))
-        
 
 if __name__ == "__main__":
     test("Spenglerium", "Ee")
@@ -39,8 +40,8 @@ if __name__ == "__main__":
     test("Stantzon", "Zt")
     test("Melintzum", "Nn")
     test("Tullium", "Ty")
-    
+
     bonus1("Gozerium")
     bonus1("Slimyrine")
-    
+
     bonus2("Zuulon")
