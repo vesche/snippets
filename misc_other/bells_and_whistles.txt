@@ -1,0 +1,18 @@
+
+Kit Bells and Whistles
+
+
+Offline Stack Exchange torrent: https://archive.org/details/stackexchange
+    - android, apple, askubuntu, codegolf, codereview, crypto, cs, datascience,
+      dba, electronics, hardwarerecs, networkengineering, programmers,
+      reverseengineering, scicomp, security, serverfault, sharepoint,
+      softwarerecs, stackoverflow, stats, superuser, tor, unix, vi, webapps,
+      webmasters
+
+Offline Wikipedia
+    - wip
+
+Suricata
+    - SSL cert & ip blacklists
+
+
