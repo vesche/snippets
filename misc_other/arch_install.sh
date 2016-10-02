@@ -89,20 +89,56 @@ dmenu firefox livestreamer vlc wireshark-cli wireshark-qt \
 xf86-video-intel xorg-server xorg-xinit xorg-xrandr bspwm sxhkd dmenu \
 rxvt-unicode \
 
-# yaourt
-mkdir -p ~/tmp/AUR && cd $_
-wget https://aur.archlinux.org/cgit/aur.git/snapshot/package-query.tar.gz
-tar xfz package-query.tar.gz  # unpack tarball
-cd package-query  &&  makepkg  # cd and create package from source
-sudo pacman -U package-query*.pkg.tar.xz
-cd ~/tmp/AUR
-wget https://aur.archlinux.org/cgit/aur.git/snapshot/yaourt.tar.gz
-tar xzf yaourt.tar.gz
-cd yaourt && makepkg
-sudo pacman -U yaourt*.pkg.tar.xz
+# yaourt (if you wanna be a noob)
+# mkdir -p ~/tmp/AUR && cd $_
+# wget https://aur.archlinux.org/cgit/aur.git/snapshot/package-query.tar.gz
+# tar xfz package-query.tar.gz  # unpack tarball
+# cd package-query  &&  makepkg  # cd and create package from source
+# sudo pacman -U package-query*.pkg.tar.xz
+# cd ~/tmp/AUR
+# wget https://aur.archlinux.org/cgit/aur.git/snapshot/yaourt.tar.gz
+# tar xzf yaourt.tar.gz
+# cd yaourt && makepkg
+# sudo pacman -U yaourt*.pkg.tar.xz
 
 # AUR
-yaourt -S atom-editor lemonbar-git spotify
+mkdir -p ~/tmp/AUR
+pushd ~/tmp/AUR
+
+# lemonbar-git
+wget https://aur.archlinux.org/cgit/aur.git/snapshot/lemonbar-git.tar.gz
+tar xfz lemonbar-git.tar.gz
+pushd lemonbar-git
+makepkg
+sudo pacman -U lemonar-git*.pkg.tar.xz
+popd
+
+# atom
+wget https://aur.archlinux.org/cgit/aur.git/snapshot/atom-editor.tar.gz
+tar xfz atom-editor.tar.gz
+pushd atom-editor
+makepkg
+sudo pacman -U atom-edutor*.pkg.tar.xz
+popd
+
+# spotify
+wget https://aur.archlinux.org/cgit/aur.git/snapshot/spotify.tar.gz
+tar xfz spotify.tar.gz
+pushd spotify
+makepkg
+sudo pacman -U spotify*.pkg.tar.xz
+popd
+
+# slack
+wget https://aur.archlinux.org/cgit/aur.git/snapshot/slack-desktop.tar.gz
+tar xfz slack-desktop.tar.gz
+pushd slack-desktop
+makepkg
+sudo pacman -U slack-desktop*.pkg.tar.xz
+popd
+
+# end AUR
+popd
 
 # dotfiles
 git clone https://github.com/vesche/dotfiles
@@ -111,3 +147,4 @@ cp -R dotfiles/.config ~/
 
 # firefox add-ons: imagus, ublock, stylish
 # stylish themes: github, hacker news, reddit, stackoverflow, wikipedia
+
