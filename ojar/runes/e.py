@@ -1,6 +1,8 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
-# [e]vil rune
+# ojar - [e]vil rune
+
 
 def gencc(n):
     from random import choice
@@ -10,6 +12,7 @@ def gencc(n):
         cards.append('-'.join([card_numbs[i:i+4] for i in range(0, \
         len(card_numbs), 4)]))
     return '\n'.join(cards)
+
 
 def info(_):
     from common import list_functions

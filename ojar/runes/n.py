@@ -1,10 +1,13 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
-# [n]etwork rune
+# ojar - [n]etwork rune
+
 
 def externalip(_):
     from urllib2 import urlopen
     return urlopen("http://myexternalip.com/raw").read().strip()
+
 
 def info(_):
     from common import list_functions

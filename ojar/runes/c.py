@@ -1,10 +1,13 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
-# [c]rypto rune
+# ojar - [c]rypto rune
+
 
 def info(_):
     from common import list_functions
     return "[c]rypto rune\nactions: {}".format(list_functions(__name__))
+
 
 def hashall(file_path):
     from os.path import isfile
@@ -16,6 +19,7 @@ def hashall(file_path):
     else:
         return "Invalid path."
 
+
 def md5(file_path):
     from hashlib import md5 as getmd5
     from os.path import isfile
@@ -23,6 +27,7 @@ def md5(file_path):
         return getmd5(open(file_path, 'rb').read()).hexdigest()
     else:
         return "Invalid path."
+
 
 def sha1(file_path):
     from hashlib import sha1 as getsha1
@@ -32,6 +37,7 @@ def sha1(file_path):
     else:
         return "Invalid path."
 
+
 def sha224(file_path):
     from hashlib import sha224 as getsha224
     from os.path import isfile
@@ -39,6 +45,7 @@ def sha224(file_path):
         return getsha224(open(file_path, 'rb').read()).hexdigest()
     else:
         return "Invalid path."
+
 
 def sha256(file_path):
     from hashlib import sha256 as getsha256
@@ -48,6 +55,7 @@ def sha256(file_path):
     else:
         return "Invalid path."
 
+
 def sha384(file_path):
     from hashlib import sha384 as getsha384
     from os.path import isfile
@@ -55,6 +63,7 @@ def sha384(file_path):
         return getsha384(open(file_path, 'rb').read()).hexdigest()
     else:
         return "Invalid path."
+
 
 def sha512(file_path):
     from hashlib import sha512 as getsha512

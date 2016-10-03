@@ -14,3 +14,6 @@ The [o]jar rune is used for these admin sorts of things. Run `o runelist` to get
 
 ### Cool, but how do I know what I can do with a rune?
 When in doubt use `?`. For example, if you wanted to know all the actions you could do with the [s]tring rune see `s ?`.
+
+### I want to make a rune!
+See the [Runecrafting](doc/RUNECRAFTING.md) document.

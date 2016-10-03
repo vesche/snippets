@@ -1,11 +1,19 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+# ojar (Oh, Just Another REPL)
+# https://github.com/vesche/ojar
+
 
 import readline
 from string import ascii_lowercase
 
-help_text  = '''ojar (Oh, Just Another REPL) - https://github.com/vesche/ojar
 
-Syntax: <rune> <action> <argument>
+help_text  = '''ojar (Oh, Just Another REPL)
+https://github.com/vesche/ojar
+
+Syntax:
+<rune> <action> <argument>
 
 Example:
 > s ?
@@ -17,10 +25,10 @@ actions: info, length
 
 See `o runelist` for a list of runes.
 '''
-
 invalid_text = "Invalid {}.\n"
 
-if __name__ == "__main__":
+
+def main():
 
     while True:
 
@@ -65,3 +73,7 @@ if __name__ == "__main__":
 
         # output
         print str(action(argument)) + '\n'
+
+
+if __name__ == "__main__":
+    main()

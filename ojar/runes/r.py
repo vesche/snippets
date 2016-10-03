@@ -1,6 +1,8 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 # [r]andom rune
+
 
 def info(_):
     from common import list_functions

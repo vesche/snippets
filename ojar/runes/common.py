@@ -1,6 +1,8 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
-# common functions for runes
+# ojar - common functions for runes
+
 
 def list_functions(rune_module):
     from sys import modules

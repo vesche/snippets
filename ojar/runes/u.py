@@ -1,6 +1,8 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 # [u]nit rune
+
 
 def ftoc(f):
     return float(5) / float(9) * (int(f) - 32)
