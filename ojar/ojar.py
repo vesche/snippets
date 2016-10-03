@@ -47,10 +47,11 @@ def main():
         # get rune
         try:
             rune = command[0]
-            if (rune not in ascii_lowercase) or (len(rune) != 1): raise
+            if (rune not in ascii_lowercase) or (len(rune) != 1):
+                raise AttributeError
             rune = getattr(__import__("runes", globals(), locals(), \
             [rune], -1), rune)
-        except:
+        except AttributeError:
             print invalid_text.format("rune")
             continue
 
@@ -60,16 +61,12 @@ def main():
             if action == '?':
                 action = "info"
             action = getattr(rune, action)
-        except:
+        except AttributeError:
             print invalid_text.format("action")
             continue
 
         # get argument
-        try:
-            argument = ' '.join(command[2:])
-        except:
-            print invalid_text.format("argument")
-            continue
+        argument = ' '.join(command[2:])
 
         # output
         print str(action(argument)) + '\n'
