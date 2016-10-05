@@ -79,6 +79,10 @@ exit
 sudo systemctl enable dhcpcd@eno1.service
 sudo systemctl start dhcpcd@eno1.service
 
+# ssh
+sudo systemctl enable sshd
+sudo systemctl start sshd
+
 # package spam
 sudo pacman -S \
 cmus feh gcc git nano net-tools nitrogen nmap htop openssh profont ranger \
@@ -87,7 +91,7 @@ yajl youtube-dl \
 python python-pip python-setuptools python2 python2-pip python2-setuptools \
 dmenu firefox livestreamer vlc wireshark-cli wireshark-qt \
 xf86-video-intel xorg-server xorg-xinit xorg-xrandr bspwm sxhkd dmenu \
-rxvt-unicode \
+rxvt-unicode w3m unrar qt4 mupdf p7zip pcmanfs \
 
 # yaourt (if you wanna be a noob)
 # mkdir -p ~/tmp/AUR && cd $_
