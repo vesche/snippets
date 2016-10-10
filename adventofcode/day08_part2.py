@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 #################################
-# Advent of Code, Day 07 - Part 2
+# Advent of Code, Day 08 - Part 2
 # https://github.com/vesche
 #################################
 
