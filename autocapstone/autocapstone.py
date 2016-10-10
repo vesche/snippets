@@ -39,7 +39,7 @@ def prompt_stop():
 
 def main():
     print "----------------------------------"
-    print "Autocapstone v0.3 - Austin Jackson"
+    print "Autocapstone v0.4 - Austin Jackson"
     print "----------------------------------"
     url = raw_input("Url? ")
 
