@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from bs4 import BeautifulSoup
 import requests
 import requests.exceptions
@@ -5,8 +7,9 @@ from urlparse import urlsplit
 from collections import deque
 import re
 
+
 def crawl(url):
-    new_urls        = deque(['http://{}'.format(url)])
+    new_urls        = deque(["http://{}".format(url)])
     processed_urls  = set()
     emails          = []
 
@@ -33,13 +36,13 @@ def crawl(url):
         soup = BeautifulSoup(response.text)
 
         for anchor in soup.find_all('a'):
-            link = anchor.attrs['href'] if 'href' in anchor.attrs else ''
+            link = anchor.attrs["href"] if "href" in anchor.attrs else ''
             if link.startswith('/'):
                 link = base_url + link
-            elif not link.startswith('http'):
+            elif not link.startswith("http"):
                 link = path + link
             if not link in new_urls and not link in processed_urls:
                 new_urls.append(link)
 
-    with open('emails.txt', 'w') as f:
+    with open("emails.txt", 'w') as f:
         f.write('\n'.join(emails))

