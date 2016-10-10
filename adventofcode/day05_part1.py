@@ -1,13 +1,20 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
+
+#################################
+# Advent of Code, Day 05 - Part 1
+# https://github.com/vesche
+#################################
 
 from string import ascii_lowercase
+
 
 def main():
     nice_count = 0
     bad_pairs = ['ab', 'cd', 'pq', 'xy']
     vowels = list('aeiou')
 
-    with open("05_input.txt", 'r') as f:
+    with open("day05_input.txt", 'r') as f:
         for s in f.read().splitlines():
             nice = True
             for pair in bad_pairs:
@@ -31,7 +38,8 @@ def main():
             if nice:
                 nice_count += 1
 
-    return nice_count
+    print nice_count
+
 
 if __name__ == "__main__":
-    print main()
+    main()

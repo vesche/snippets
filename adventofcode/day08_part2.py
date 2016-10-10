@@ -1,9 +1,16 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
+
+#################################
+# Advent of Code, Day 07 - Part 2
+# https://github.com/vesche
+#################################
+
 
 def main():
     encoded, literal = 0, 0
 
-    with open("08_input.txt") as f:
+    with open("day08_input.txt") as f:
         lines = f.read().splitlines()
 
     for line in lines:
@@ -15,7 +22,8 @@ def main():
         encoded += len(line) + extra
         literal += len(line)
 
-    return encoded - literal
+    print encoded - literal
+
 
 if __name__ == "__main__":
-    print main()
+    main()

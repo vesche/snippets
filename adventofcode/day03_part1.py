@@ -1,10 +1,17 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
+
+#################################
+# Advent of Code, Day 03 - Part 1
+# https://github.com/vesche
+#################################
+
 
 def main():
     loc = 0
     locations = {0:1}
 
-    with open("03_input.txt", 'r') as f:
+    with open("day03_input.txt", 'r') as f:
         for direction in f.read():
             if direction == '^':
                 loc += 1000
@@ -16,10 +23,11 @@ def main():
                 loc -= 1
             try:
                 locations[loc] += 1
-            except:
+            except KeyError:
                 locations[loc] = 1
 
-    return len(locations)
+    print len(locations)
+
 
 if __name__ == "__main__":
-    print main()
+    main()

@@ -1,4 +1,11 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
+
+#################################
+# Advent of Code, Day 03 - Part 2
+# https://github.com/vesche
+#################################
+
 
 def run(li):
     loc = 0
@@ -15,15 +22,16 @@ def run(li):
             loc -= 1
         try:
             locations[loc] += 1
-        except:
+        except KeyError:
             locations[loc] = 1
 
     return locations
 
+
 def main():
     santa_data, rsanta_data = '', ''
 
-    with open("03_input.txt", 'r') as f:
+    with open("day03_input.txt", 'r') as f:
         data = f.read()
         for i in range(len(data)):
             if i % 2 == 0:
@@ -36,7 +44,8 @@ def main():
     combine = santa.copy()
     combine.update(rsanta)
 
-    return len(combine)
+    print len(combine)
+
 
 if __name__ == "__main__":
-    print main()
+    main()
