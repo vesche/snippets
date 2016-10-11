@@ -1,3 +1,12 @@
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
+
+##################################################################
+# http://www.pythonchallenge.com/
+# My solutions to the first few challenges before I lost interest.
+# https://github.com/vesche
+##################################################################
+
 import pickle
 import urllib2
 import zipfile
@@ -5,13 +14,13 @@ from PIL import Image
 import ImageDraw
 from string import ascii_lowercase
 
-# www.pythonchallenge.com
 
 def levelseven():
     load = Image.open('oxygen2.png')
     data = load.tostring()
     data = data.split('\xff')
     return data
+
 
 def levelsix():
     z = zipfile.ZipFile('channel.zip')
@@ -27,6 +36,7 @@ def levelsix():
             print ''.join(li)
             break
 
+
 def levelfive():
     data = pickle.load(open('banner.p', 'rb'))
     for i in data:
@@ -34,6 +44,7 @@ def levelfive():
         for j in i:
             line += j[0] * j[1]
         print line
+
 
 def levelfour(numb):
     while True:
@@ -45,6 +56,7 @@ def levelfour(numb):
             response.close()
         except:
             break
+
 
 def levelthree(blob):
     string = ''
@@ -61,6 +73,7 @@ def levelthree(blob):
             break
     return string
 
+
 def leveltwo(blob):
     chars = {}
     for i in blob:
@@ -69,6 +82,7 @@ def leveltwo(blob):
             continue
         chars[i] = 1
     return chars
+
 
 def rotn(n, blob):
     decrypted = ''

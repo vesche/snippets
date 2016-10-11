@@ -1,11 +1,17 @@
 #!/usr/bin/env python2
+# -*- coding: utf-8 -*-
+
+##################################
+# blindscan.py
+# https://github.com/vesche
+##################################
 
 import random
 import socket
 import sys
 
 
-def main(ip):
+def scan(ip):
     ports = [21, 22, 53, 80, 443, 445, 8080]
     random.shuffle(ports)
 
@@ -25,8 +31,13 @@ def main(ip):
 
         print "{:>5}/tcp {:>7} {}".format(port, state, banner)
 
-if __name__ == "__main__":
+
+def main():
     if len(sys.argv) != 2:
         print "Usage: ./blindscan.py <ip>"
     ip = sys.argv[1]
-    main(ip)
+    scan(ip)
+
+
+if __name__ == "__main__":
+    main()

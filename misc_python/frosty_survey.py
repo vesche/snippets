@@ -1,11 +1,15 @@
 #!/usr/bin/env python
 
+###########################
 # Frosty Survey
+# https://github.com/vesche
+###########################
 
 import optparse
 import os
 import subprocess
 import sys
+
 
 def survey(network, domain, share, username, password):
 	ip_list = []
@@ -88,6 +92,7 @@ def survey(network, domain, share, username, password):
 
 		os.system(".\\temp.bat")
 
+
 def main():
 	survey_text = '''Frosty survey, runs remote commands on systems to survey hosts on a domain.
 Must be run with domain admin credentials, creates a survey folder for each host and text files
@@ -104,6 +109,7 @@ for command output. This early version only scans /24 networks. For instance ent
 	p.add_option('-p', action='store_true', help='password')
 	options, arg = p.parse_args()
 	survey(network=arg[0], domain=arg[1], share=arg[2], username=arg[3], password=arg[4])
+
 
 if __name__ == "__main__":
 	main()

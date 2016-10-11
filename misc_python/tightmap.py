@@ -1,16 +1,22 @@
 #!/usr/bin/env python2
+# -*- coding: utf-8 -*-
 
+###########################
 # tightmap.py
+# https://github.com/vesche
+###########################
 
 import nmap
 from Tkinter import *
+
 
 def donothing():
     filewin = Toplevel(root)
     button = Button(filewin, text="Do nothing button")
     button.pack()
 
-if __name__ == '__main__':
+
+def main():
     root = Tk()
     root.geometry('640x480')
 
@@ -45,3 +51,7 @@ if __name__ == '__main__':
 
     root.config(menu=menubar)
     root.mainloop()
+
+
+if __name__ == '__main__':
+    main()

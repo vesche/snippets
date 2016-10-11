@@ -1,19 +1,28 @@
+# -*- coding: utf-8 -*-
 
-# shitty python script for extracting files from hdds on a windows systems
+#########################################################################
+# hdd_file_extract.py
+# Shitty python script for extracting files from hdds on windows systems.
+# https://github.com/vesche
+#########################################################################
 
 import os
 import win32api
 
+
 filetypes = ['jpg', 'jpeg', 'bmp', 'pdf', 'doc', 'docx', 'xls', 'rtf', 'zip']
+
 
 def list_available_drives():
     drives = win32api.GetLogicalDriveStrings()
     drives = drives.split('\000')[:-1]
     return drives
 
+
 def file_count(txt_file):
     with open(txt_file) as f:
         return sum(1 for _ in f)
+
 
 def create_batch_script(ext, txt_file):
     data = open(txt_file).read().splitlines()
@@ -21,6 +30,7 @@ def create_batch_script(ext, txt_file):
         f.write("@echo off\n")
         for fpath in data:
             f.write('copy "{}" {}\\{}\n'.format(fpath, os.getcwd(), ext))
+
 
 def main():
     print "Windows HDD File Extractor"
@@ -43,6 +53,7 @@ def main():
             print "Finished extracting {} files!\n".format(ext)
         else:
             print "Skipping {} file extraction.\n".format(ext)
+
 
 if __name__ == "__main__":
     main()

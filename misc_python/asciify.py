@@ -1,5 +1,16 @@
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
+
+################################
+# asciify.py
+# Turns an image into ASCII art.
+# Essentially a rewrite of - https://gist.github.com/cdiener/10491632
+# https://github.com/vesche
+################################
+
 from PIL import Image
 import numpy as np
+
 
 def asciify(f):
     scale, factor, wcf = 0.02, 1, 7/4
@@ -9,8 +20,13 @@ def asciify(f):
     img = np.sum(np.asarray(img.resize(s)), axis=2)
     img -= img.min()
     img = (1.0 - img/img.max())**factor*(chars.size-1)
-    return "\n".join(("".join(r) for r in chars[img.astype(int)]))
+    return '\n'.join((''.join(r) for r in chars[img.astype(int)]))
 
-if __name__ == "__main__":
+
+def main():
     image_file = "whatever.jpg"
     print(asciify(image_file))
+
+
+if __name__ == "__main__":
+    main()
