@@ -1,3 +1,6 @@
+// dailyprogrammer 197 easy
+// https://github.com/vesche
+
 package main
 
 import (
