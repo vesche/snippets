@@ -1,6 +1,4 @@
-
 Kit Bells and Whistles
-
 
 Offline Stack Exchange torrent: https://archive.org/details/stackexchange
     - android, apple, askubuntu, codegolf, codereview, crypto, cs, datascience,
@@ -14,5 +12,3 @@ Offline Wikipedia
 
 Suricata
     - SSL cert & ip blacklists
-
-
