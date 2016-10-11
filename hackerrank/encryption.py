@@ -1,21 +1,35 @@
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
+
+######################################################
+# hackerrank, encryption
+# https://www.hackerrank.com/challenges/encryption
+# https://github.com/vesche
+######################################################
+
 import math
 
-STDIN = raw_input()
-rows = int(math.floor(math.sqrt(len(STDIN))))
-cols = int(math.ceil(math.sqrt(len(STDIN))))
-li = []
 
-for i in range(len(STDIN)):
-    if i % cols == 0:
-        try:    li.append(STDIN[i:i+cols])
-        except: li.append(STDIN[i:])
+def main():
+    stdin = raw_input()
+    rows = int(math.floor(math.sqrt(len(stdin))))
+    cols = int(math.ceil(math.sqrt(len(stdin))))
 
-blob = []
-for i in range(len(li[0])):
-    blob.append('')
+    li = []
+    for i in range(len(stdin)):
+        if i % cols == 0:
+            li.append(stdin[i:i+cols])
 
-for i in range(len(li)):
-    for j in range(len(li[i])):
-        blob[j] += li[i][j]
+    blob = []
+    for i in range(len(li[0])):
+        blob.append('')
 
-print ' '.join(blob)
+    for i in range(len(li)):
+        for j in range(len(li[i])):
+            blob[j] += li[i][j]
+
+    print ' '.join(blob)
+
+
+if __name__ == "__main__":
+    main()

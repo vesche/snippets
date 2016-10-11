@@ -1,4 +1,6 @@
-// unfinished
+// hackerrank, maximizing-xor
+// https://www.hackerrank.com/challenges/maximizing-xor
+// https://github.com/vesche
 
 package main
 
@@ -11,14 +13,13 @@ func main() {
     var a, b int64
     fmt.Scanf("%v", &a)
     fmt.Scanf("%v", &b)
-    
+
     a_bin := strconv.FormatInt(a, 2)
     b_bin := strconv.FormatInt(b, 2)
-    
-    // for ; 
-    
+
+    // unfinished
+
     xor(a_bin, b_bin)
-    // fmt.Println(test)
 }
 
 func xor(a_bin, b_bin string) string {

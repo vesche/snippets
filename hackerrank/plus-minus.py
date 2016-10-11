@@ -1,3 +1,13 @@
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
+
+######################################################
+# hackerrank, plus-minus
+# https://www.hackerrank.com/challenges/plus-minus
+# https://github.com/vesche
+######################################################
+
+
 def plusminus(x, numbs):
     x               = float(x)
     numbs           = numbs.split(' ')
@@ -8,9 +18,15 @@ def plusminus(x, numbs):
     	elif n[0] == '0': zer += 1
     	else:             pos += 1
 
-    print '%.3f' % (pos / x)
-    print '%.3f' % (neg / x)
-    print '%.3f' % (zer / x)
+    print "%.3f" % (pos / x)
+    print "%.3f" % (neg / x)
+    print "%.3f" % (zer / x)
 
-plusminus('6', '-2 -1 0 1 2 3')
-plusminus('12', '-2 -1 0 1 2 3 4 5 6 7 8 9 10')
+
+def main():
+    plusminus('6', "-2 -1 0 1 2 3")
+    plusminus("12", "-2 -1 0 1 2 3 4 5 6 7 8 9 10")
+
+
+if __name__ == "__main__":
+    main()
