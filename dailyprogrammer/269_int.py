@@ -1,6 +1,13 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
+
+##################################
+# dailyprogrammer 269 intermediate
+# https://github.com/vesche
+##################################
 
 from string import ascii_lowercase, ascii_uppercase
+
 
 all_letters = ascii_lowercase + ascii_uppercase
 top, right = ascii_lowercase[:13], ascii_lowercase[13:]
@@ -11,10 +18,11 @@ move = [-16, 16, -1, 1]
 ciphertext = 'TpnQSjdmZdpoohd'
 plaintext = ''
 
-if __name__ == '__main__':
+
+def main():
     with open('269_int_input.txt') as f:
         data = list(f.read())
-    
+
     for cipherletter in ciphertext:
         if cipherletter in bottom:
             direction = 0
@@ -24,13 +32,13 @@ if __name__ == '__main__':
             direction = 2
         elif cipherletter in left:
             direction = 3
-        
+
         location = data.index(cipherletter)
-        
+
         while True:
             location += move[direction]
             tile = data[location]
-            
+
             if tile in all_letters:
                 plaintext += tile
                 break
@@ -40,3 +48,7 @@ if __name__ == '__main__':
                 direction ^= 2
 
     print plaintext
+
+
+if __name__ == "__main__":
+    main()

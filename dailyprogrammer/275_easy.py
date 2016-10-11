@@ -1,7 +1,14 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+###########################
+# dailyprogrammer 275 easy
+# https://github.com/vesche
+###########################
 
 from string import ascii_lowercase
 from itertools import product
+
 
 def test(element, symbol):
     print "%s, %s ->" % (element, symbol),
@@ -15,6 +22,7 @@ def test(element, symbol):
     except:
             print "false"
 
+
 def bonus1(element):
     e_chop = element[:-1].lower()
     index_a = e_chop.rindex(''.join(sorted(e_chop))[0])
@@ -22,6 +30,7 @@ def bonus1(element):
     index_b = e_chop.rindex(''.join(sorted(e_chop))[0]) + index_a + 1
     symbol = element[index_a].upper() + element[index_b]
     print "%s -> %s" % (element, symbol)
+
 
 def bonus2(element):
     pairs = list(set([''.join(i) for i in product(element, repeat=2)]))
@@ -33,7 +42,8 @@ def bonus2(element):
     print pairs
     print "%s -> %s" % (element, str(len(pairs)))
 
-if __name__ == "__main__":
+
+def main():
     test("Spenglerium", "Ee")
     test("Zeddemorium", "Zr")
     test("Venkmine", "Kn")
@@ -45,3 +55,7 @@ if __name__ == "__main__":
     bonus1("Slimyrine")
 
     bonus2("Zuulon")
+
+
+if __name__ == "__main__":
+    main()

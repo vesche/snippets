@@ -1,6 +1,13 @@
-import string
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
 
-letters = string.ascii_uppercase
+###########################
+# dailyprogrammer 228 easy
+# https://github.com/vesche
+###########################
+
+from string import ascii_lowercase as letters
+
 
 def sauce(word):
     order = []
@@ -15,11 +22,13 @@ def sauce(word):
     else:
         return "NOT IN ORDER"
 
+
 def main():
     f = open('input.txt')
 
     for word in f.read().splitlines():
         print word, sauce(word.upper())
+
 
 if __name__ == "__main__":
     main()

@@ -1,4 +1,14 @@
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
+
+###########################
+# dailyprogrammer 222 easy
+# https://github.com/vesche
+###########################
+
+
 letters = ' abcdefghijklmnopqrstuvwxyz'
+
 
 def justdoit(word):
     word = word.lower()
@@ -18,12 +28,18 @@ def justdoit(word):
     try:
         output = "{} {} {} - {}".format(upper.upper()[::-1], \
             word[i+1].upper(), lower.upper(), u_total)
-    except:
+    except IndexError:
         output = "{} DOES NOT BALANCE".format(word.upper())
 
     return output
 
-print justdoit("CONSUBSTANTIATION")
-print justdoit("WRONGHEADED")
-print justdoit("UNINTELLIGIBILITY")
-print justdoit("SUPERGLUE")
+
+def main():
+    print justdoit("CONSUBSTANTIATION")
+    print justdoit("WRONGHEADED")
+    print justdoit("UNINTELLIGIBILITY")
+    print justdoit("SUPERGLUE")
+
+
+if __name__ == "__main__":
+    main()

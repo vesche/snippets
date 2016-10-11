@@ -1,15 +1,27 @@
-import string
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
 
-s = ''
-alpha = string.ascii_lowercase
+###########################
+# dailyprogrammer 232 easy
+# https://github.com/vesche
+###########################
 
-for i in range(input()):
-	for letter in raw_input():
-		letter = letter.lower()
-		if letter in alpha:
-			s += letter
+from string import ascii_lowercase as letters
 
-if s == s[::-1]:
-	print "Palindrome"
-else:
-	print "Not a palindrome"
+
+def main():
+	s = ''
+	for i in range(input()):
+		for letter in raw_input():
+			letter = letter.lower()
+			if letter in letters:
+				s += letter
+
+	if s == s[::-1]:
+		print "Palindrome"
+	else:
+		print "Not a palindrome"
+
+
+if __name__ == "__main__":
+	main()

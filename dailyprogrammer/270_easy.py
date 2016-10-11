@@ -1,6 +1,13 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
-if __name__ == "__main__":
+###########################
+# dailyprogrammer 270 easy
+# https://github.com/vesche
+###########################
+
+
+def main():
     data = open('270_easy_input.txt').read().splitlines()
 
     for i in range(len(max(data, key=len))):
@@ -10,3 +17,7 @@ if __name__ == "__main__":
             except:
                 print(' ', end='')
         print()
+
+
+if __name__ == "__main__":
+    main()

@@ -1,4 +1,11 @@
-# unfinished, need to work on reverse solve alg...
+#!/usr/bin/env python2
+# -*- coding: utf-8 -*-
+
+###########################
+# dailyprogrammer 238 hard
+# https://github.com/vesche
+###########################
+
 
 def get_dung(data):
     dung = {}
@@ -14,9 +21,11 @@ def get_dung(data):
         line += 1
     return dung
 
+
 def print_dung(dung):
     for _ in sorted(dung):
         print ''.join(dung[_])
+
 
 def get_pos(dung):
     up_pos, down_pos = [], []
@@ -33,13 +42,19 @@ def get_pos(dung):
                 down_pos.append([x,y,i])
     return start_pos, goal_pos, up_pos, down_pos
 
+
 def reverse_solve(dung, s, g, u, d):
-    
+    # unfinished, need to work on reverse solve alg...
     return dung
 
-if __name__ == "__main__":
+
+def main():
     data = open('input.txt', 'r').readlines()
     dung = get_dung(data)
     s, g, u, d = get_pos(dung)
     dung = reverse_solve(dung, s, g, u, d)
     print_dung(dung)
+
+
+if __name__ == "__main__":
+    main()
