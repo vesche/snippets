@@ -1,6 +1,6 @@
 ## Cryptosplurge
 
-Usage: `python splurge.py <file>`  
+Usage: `./cryptosplurge.py <file>`  
 
 Cryptosplurge attempts to decrypt a file by attempting many common decryption
 methods, and displaying the decrypted text to the user. By manually skimming
@@ -23,4 +23,3 @@ backup purposes, currently only a basic idea.**
     * fuzzyhash
     * dvorak/qwerty
     * encoding
-
