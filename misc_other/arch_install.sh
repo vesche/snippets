@@ -90,8 +90,9 @@ rtorrent screenfetch scrot tcpdump tcpreplay tree tmux unzip vim weechat wget \
 yajl youtube-dl \
 python python-pip python-setuptools python2 python2-pip python2-setuptools \
 dmenu firefox livestreamer vlc wireshark-cli wireshark-qt \
-xf86-video-intel xorg-server xorg-xinit xorg-xrandr bspwm sxhkd dmenu \
-rxvt-unicode w3m unrar qt4 mupdf p7zip pcmanfs \
+xf86-video-intel xorg-server xorg-xinit xorg-xrandr bspwm sxhkd \
+rxvt-unicode w3m unrar qt4 mupdf p7zip pcmanfs gvbam ntp cheese deluge \
+i3lock-blur megasync steam pulseaudio redshift
 
 # yaourt (if you wanna be a noob)
 # mkdir -p ~/tmp/AUR && cd $_
@@ -104,6 +105,9 @@ rxvt-unicode w3m unrar qt4 mupdf p7zip pcmanfs \
 # tar xzf yaourt.tar.gz
 # cd yaourt && makepkg
 # sudo pacman -U yaourt*.pkg.tar.xz
+
+# pip spam
+sudo pip install psutil livestreamer requests pygments
 
 # AUR
 mkdir -p ~/tmp/AUR
@@ -141,6 +145,14 @@ makepkg
 sudo pacman -U slack-desktop*.pkg.tar.xz
 popd
 
+# megasync
+wget https://aur.archlinux.org/cgit/aur.git/snapshot/megasync.tar.gz
+tar xfz megasync.tar.gz
+pushd megasync
+makepkg
+sudo pacman -U megasync*.pkg.tar.xz
+popd
+
 # end AUR
 popd
 
@@ -151,4 +163,3 @@ cp -R dotfiles/.config ~/
 
 # firefox add-ons: imagus, ublock, stylish
 # stylish themes: github, hacker news, reddit, stackoverflow, wikipedia
-
