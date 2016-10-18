@@ -7,7 +7,6 @@
 # https://github.com/vesche
 #################################
 
-
 import os
 import urllib2
 import ssl
