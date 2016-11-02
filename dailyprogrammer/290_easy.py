@@ -16,4 +16,3 @@ for n in range(lower, upper+1):
 
         if a + b == n and a != 0 and b != 0:
             print n,
-            continue
