@@ -27,14 +27,7 @@ def main():
         facing %= 4
         
         for i in range(1, blocks+1):
-            if facing == 0:
-                d[0] += 1
-            elif facing == 1:
-                d[1] += 1
-            elif facing == 2:
-                d[2] += 1
-            elif facing == 3:
-                d[3] += 1
+            d[facing] += 1
             
             x, y = d[1] - d[3], d[0] - d[2]
             locations.append([x, y])
