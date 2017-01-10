@@ -1,10 +1,10 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
-######################################
-# Advent of Code 2016, Day 08 - Part 1
+#############################
+# Advent of Code 2016, Day 08
 # https://github.com/vesche
-######################################
+#############################
 
 def main():
     screen = [list('.'*50) for _ in range(6)]
