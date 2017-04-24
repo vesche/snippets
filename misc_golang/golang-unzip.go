@@ -1,10 +1,10 @@
 package main
 
 import (
-    "archive/zip"
-    "io"
-    "os"
-    "path/filepath"
+	"archive/zip"
+	"io"
+	"os"
+	"path/filepath"
 )
 
 func unzip(archive, target string) error {
