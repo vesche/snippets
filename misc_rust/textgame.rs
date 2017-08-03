@@ -10,6 +10,15 @@ const BANNER: &'static str = "
 .||.  '|'   .||.   .|.  .||.
      Rust Text Adventure";
 
+const HELP_TEXT: &'static str = "
+n - move north
+s - move south
+e - move east
+w - move west
+q - quit the game
+h - display this help text
+i - inventory";
+
 fn main() {
     // define map
     let mut map = [
@@ -33,7 +42,8 @@ fn main() {
     let mut mod_y: i32 = 0;
     let mut mod_x: i32 = 0;
     let mut level = 0;
-    let mut message = "You awake in a dark, damp jungle...";
+    let mut message = "You awake in a dark, damp jungle on a mysterious island...";
+    let mut inventory = ["lamp", "sword", "hat"];
 
     // start game
     clear_screen();
@@ -48,13 +58,13 @@ fn main() {
         // set player position
         map[pos_y as usize][pos_x as usize] = "@";
         
-        // print map / game
+        // display game - stats, map, message, and tile description
         println!("RTA | {} | LV: {} | y: {} x: {}", name, level, pos_y, pos_x);
         for i in 0..11 {
             println!("{}", map[i].join(""));
         }
         xprint(message);
-        // println!("{}", map_desc(pos_y, pos_x));
+        tile_desc(pos_y, pos_x);
         
         // reset player position and message
         map[pos_y as usize][pos_x as usize] = "*";
@@ -68,26 +78,18 @@ fn main() {
         player_move = player_move.to_lowercase();
         
         // act on player move
-        if player_move == "north" || player_move == "n" {
-            mod_y = -1;
-        }
-        else if player_move == "south" || player_move == "s" {
-            mod_y = 1;
-        }
-        else if player_move == "east" || player_move == "e" {
-            mod_x = 1;
-        }
-        else if player_move == "west" || player_move == "w" {
-            mod_x = -1;
-        }
-        else if player_move == "quit" || player_move == "q" {
-            break;
-        }
-        else {
-            println!("Invalid move!");
-        }
+        match player_move.as_ref() {
+            "n" => mod_y = -1,
+            "s" => mod_y =  1,
+            "e" => mod_x =  1,
+            "w" => mod_x = -1,
+            "q" => break,
+            "h" => message = HELP_TEXT,
+            "i" => message = "inv",
+            _   => message = "Invalid move!",
+        };
         
-        // check
+        // move in direction if possible
         if map[(pos_y + mod_y) as usize][(pos_x + mod_x) as usize] == " " {
             message = "You can't go that way!";
         } else {
@@ -98,24 +100,18 @@ fn main() {
     }
 }
 
-/*
-fn map_desc(pos_y: usize, pos_x: usize) -> String {
-    // Returns location description given a (y, x) coordinate
+fn tile_desc(pos_y: i32, pos_x: i32) {
+    // Print tile description given a (y, x) coordinate
 
-    // let desc = String::new();
-    let desc = "";
     let coords = [(4, 10), (5, 10)];
-    let test = ["Jungle", "Beach"];
+    let test = ["Beach", "Jungle"];
     
     for i in 0..coords.len() {
-        if (pos_y, pos_x) == coords[i] {
-            let desc = test[i];
+        if coords[i].0 == pos_y && coords[i].1 == pos_x {
+            xprint(test[i]);
         }
     }
-    
-    desc.to_string()
 }
-*/
 
 fn input(prompt: &str) -> String {
     // Returns a user input string without a trailing new line.
