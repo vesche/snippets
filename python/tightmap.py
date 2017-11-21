@@ -1,10 +1,10 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
-###########################
+#
 # tightmap.py
 # https://github.com/vesche
-###########################
+#
 
 import nmap
 from Tkinter import *

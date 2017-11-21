@@ -1,10 +1,10 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
-###########################
+#
 # dailyprogrammer 290 easy
 # https://github.com/vesche
-###########################
+#
 
 lower, upper = map(int, raw_input().split())
 

@@ -1,11 +1,10 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
-##################################
-# bar.py
-# personal minimal lemonbar script
+#
+# bar.py - personal minimal lemonbar script
 # https://github.com/vesche
-##################################
+#
 
 from os import popen, system
 from time import sleep

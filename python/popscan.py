@@ -1,11 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-#################################
-# popscan.py
-# Web server enumeration utility.
+#
+# popscan.py - Web server enumeration utility.
 # https://github.com/vesche
-#################################
+#
 
 import os
 import urllib2

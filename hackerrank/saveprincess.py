@@ -1,11 +1,10 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
-######################################################
+#
 # hackerrank, saveprincess
-# https://www.hackerrank.com/challenges/saveprincess
 # https://github.com/vesche
-######################################################
+#
 
 
 def main():

@@ -1,11 +1,10 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
-#######################################################
+#
 # hackerrank, time-conversion
-# https://www.hackerrank.com/challenges/time-conversion
 # https://github.com/vesche
-#######################################################
+#
 
 
 def main():

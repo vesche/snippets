@@ -1,11 +1,10 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
-######################################################
+#
 # hackerrank, cut-the-sticks
-# https://www.hackerrank.com/challenges/cut-the-sticks
 # https://github.com/vesche
-######################################################
+#
 
 
 def main():

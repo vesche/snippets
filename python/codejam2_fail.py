@@ -1,11 +1,11 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
-###############################################
+#
 # Google Code Jam 2016, Revenge of the Pancakes
 # This attempt was ultimately unsuccessful.
 # https://github.com/vesche
-###############################################
+#
 
 import random
 import sys

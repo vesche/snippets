@@ -1,10 +1,10 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
-######################################
+#
 # Google Code Jam 2016, Counting Sheep
 # https://github.com/vesche
-######################################
+#
 
 import sys
 import time

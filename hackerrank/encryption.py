@@ -1,11 +1,10 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
-######################################################
+#
 # hackerrank, encryption
-# https://www.hackerrank.com/challenges/encryption
 # https://github.com/vesche
-######################################################
+#
 
 import math
 

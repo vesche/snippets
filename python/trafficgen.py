@@ -1,10 +1,10 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
-################################################
+#
 # Traffic generation script for Cyber Magic 2016
 # https://github.com/vesche
-################################################
+#
 
 import random
 import time

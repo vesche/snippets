@@ -1,10 +1,10 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
-#####################################
+#
 # Advent of Code, Day 04 - Part 1 & 2
 # https://github.com/vesche
-#####################################
+#
 
 import hashlib
 import itertools

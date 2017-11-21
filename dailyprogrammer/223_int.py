@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-##################################
+#
 # dailyprogrammer 223 intermediate
 # https://github.com/vesche
-##################################
+#
 
 
 def problem(secret, offensive):

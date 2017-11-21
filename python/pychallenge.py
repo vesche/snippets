@@ -1,11 +1,11 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
-##################################################################
+#
 # http://www.pythonchallenge.com/
 # My solutions to the first few challenges before I lost interest.
 # https://github.com/vesche
-##################################################################
+#
 
 import pickle
 import urllib2

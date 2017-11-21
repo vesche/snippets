@@ -1,10 +1,11 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
-######################################
+#
 # Advent of Code 2016, Day 09 - Part 1
 # https://github.com/vesche
-######################################
+#
+
 
 def main():
     l = 0

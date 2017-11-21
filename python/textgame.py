@@ -1,11 +1,11 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
-##########################################
+#
 # Python Text Game for Beginners
 # Created for a Python introductory class.
 # https://github.com/vesche
-##########################################
+#
 
 import os
 import time

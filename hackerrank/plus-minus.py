@@ -1,11 +1,10 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
-######################################################
+#
 # hackerrank, plus-minus
-# https://www.hackerrank.com/challenges/plus-minus
 # https://github.com/vesche
-######################################################
+#
 
 
 def plusminus(x, numbs):

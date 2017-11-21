@@ -1,10 +1,10 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
-###########################
+#
 # ringtext
 # https://github.com/vesche
-###########################
+#
 
 import readline
 from os import system

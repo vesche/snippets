@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-####################################
+#
 # evilreplay.py
-# author - https://github.com/vesche
-####################################
+# https://github.com/vesche
+#
 
 import datetime
 import os

@@ -1,9 +1,10 @@
+#!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
-##################################
+#
 # dailyprogrammer 211 intermediate
 # https://github.com/vesche
-##################################
+#
 
 
 def ogre_maze(swamp):

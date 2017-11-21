@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-###########################
+#
 # dailyprogrammer 270 easy
 # https://github.com/vesche
-###########################
+#
 
 
 def main():

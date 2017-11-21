@@ -1,14 +1,13 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
-###########################
+#
 # dailyprogrammer 233 easy
 # https://github.com/vesche
-###########################
+#
 
 
-brick, door, edge, roof_left, roof_right, tip, window = '-', '|', '+', '/', \
-'\\', 'A', 'o'
+brick, door, edge, roof_left, roof_right, tip, window = '-', '|', '+', '/', '\\', 'A', 'o'
 
 house_space = 's'
 space = door_space = void = ' '

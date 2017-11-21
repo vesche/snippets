@@ -1,10 +1,10 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
-###########################
+#
 # 15-puzzle game
 # https://github.com/vesche
-###########################
+#
 
 import curses
 from random import shuffle

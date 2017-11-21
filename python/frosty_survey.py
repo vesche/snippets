@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 
-###########################
+#
 # Frosty Survey
 # https://github.com/vesche
-###########################
+#
 
 import optparse
 import os

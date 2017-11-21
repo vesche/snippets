@@ -1,11 +1,10 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
-######################################################
+#
 # hackerrank, maze-escape
-# https://www.hackerrank.com/challenges/maze-escape
 # https://github.com/vesche
-######################################################
+#
 
 import random
 

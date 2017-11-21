@@ -1,14 +1,15 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
-######################################
+#
 # Advent of Code 2016, Day 02 - Part 2
 # https://github.com/vesche
-######################################
+#
+
 
 def main():
     x, y = 1, 3
-    
+
     grid = ['       ',
             '   1   ',
             '  234  ',
@@ -16,7 +17,7 @@ def main():
             '  ABC  ',
             '   D   ',
             '       ']
-    
+
     with open("day02_input.txt") as f:
         for line in f.read().splitlines():
             for move in line:

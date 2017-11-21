@@ -1,15 +1,16 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
-######################################
+#
 # Advent of Code 2016, Day 02 - Part 1
 # https://github.com/vesche
-######################################
+#
+
 
 def main():
     keypad = range(1,10)
     position = 4
-    
+
     with open("day02_input.txt") as f:
         for line in f.read().splitlines():
             for move in line:

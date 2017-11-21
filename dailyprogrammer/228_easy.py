@@ -1,10 +1,10 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
-###########################
+#
 # dailyprogrammer 228 easy
 # https://github.com/vesche
-###########################
+#
 
 from string import ascii_lowercase as letters
 
@@ -18,7 +18,7 @@ def sauce(word):
     if order == sorted(order, key=int):
         return "IN ORDER"
     if order == sorted(order, key=int, reverse=True):
-    	return "REVERSE ORDER"
+        return "REVERSE ORDER"
     else:
         return "NOT IN ORDER"
 

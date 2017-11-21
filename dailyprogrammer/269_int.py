@@ -1,10 +1,10 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
-##################################
+#
 # dailyprogrammer 269 intermediate
 # https://github.com/vesche
-##################################
+#
 
 from string import ascii_lowercase, ascii_uppercase
 

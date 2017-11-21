@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-###########################
+#
 # dailyprogrammer 275 easy
 # https://github.com/vesche
-###########################
+#
 
 from string import ascii_lowercase
 from itertools import product

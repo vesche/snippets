@@ -1,10 +1,10 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
-#################################
+#
 # Advent of Code, Day 06 - Part 1
 # https://github.com/vesche
-#################################
+#
 
 
 coords = {}

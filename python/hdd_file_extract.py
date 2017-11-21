@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 
-#########################################################################
+#
 # hdd_file_extract.py
 # Shitty python script for extracting files from hdds on windows systems.
 # https://github.com/vesche
-#########################################################################
+#
 
 import os
 import win32api

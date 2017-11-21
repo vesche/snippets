@@ -1,10 +1,10 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
-######################################
+#
 # Advent of Code 2016, Day 04 - Part 2
 # https://github.com/vesche
-######################################
+#
 
 from collections import Counter
 from string import ascii_lowercase

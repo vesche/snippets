@@ -1,5 +1,4 @@
 // hackerrank, maximizing-xor
-// https://www.hackerrank.com/challenges/maximizing-xor
 // https://github.com/vesche
 
 package main

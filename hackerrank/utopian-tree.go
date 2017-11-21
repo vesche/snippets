@@ -1,5 +1,4 @@
 // hackerrank, utopian-tree
-// https://www.hackerrank.com/challenges/utopian-tree
 // https://github.com/vesche
 
 package main

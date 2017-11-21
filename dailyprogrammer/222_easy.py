@@ -1,10 +1,10 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
-###########################
+#
 # dailyprogrammer 222 easy
 # https://github.com/vesche
-###########################
+#
 
 
 letters = ' abcdefghijklmnopqrstuvwxyz'

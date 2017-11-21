@@ -1,11 +1,10 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
-###############################################################
+#
 # hackerrank, the-love-letter-mystery
-# https://www.hackerrank.com/challenges/the-love-letter-mystery
 # https://github.com/vesche
-###############################################################
+#
 
 from string import ascii_lowercase as letters
 

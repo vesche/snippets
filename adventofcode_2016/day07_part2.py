@@ -1,10 +1,11 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 
-######################################
+#
 # Advent of Code 2016, Day 07 - Part 2
 # https://github.com/vesche
-######################################
+#
+
 
 def chunks(s):
     return [s[i:i+3] for i in range(0, len(s)) if len(s[i:i+3]) == 3]

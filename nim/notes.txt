@@ -1,0 +1,4 @@
+nim compile --run foo.nim
+nim c -r foo.nim
+
+
