@@ -35,8 +35,8 @@ genfstab -U /mnt > /mnt/etc/fstab
 arch-chroot /mnt /bin/bash
 
 # locale
+vi /etc/locale.gen # uncomment: en_US.UTF-8 UTF-8
 locale-gen
-echo 'LANG=en_US.UTF-8' > /etc/locale.conf
 
 # set timezone
 ln -s /usr/share/zoneinfo/America/New_York /etc/localtime
@@ -80,86 +80,45 @@ sudo systemctl enable dhcpcd@eno1.service
 sudo systemctl start dhcpcd@eno1.service
 
 # ssh
+sudo pacman -S openssh
+sudo vi /etc/ssh/sshd_config # change a few things
 sudo systemctl enable sshd
 sudo systemctl start sshd
 
 # package spam
-sudo pacman -S \
-cmus feh gcc git nano net-tools nitrogen nmap htop openssh profont ranger \
-rtorrent screenfetch scrot tcpdump tcpreplay tree tmux unzip vim weechat wget \
-yajl youtube-dl \
-python python-pip python-setuptools python2 python2-pip python2-setuptools \
-dmenu firefox livestreamer vlc wireshark-cli wireshark-qt \
-xf86-video-intel xorg-server xorg-xinit xorg-xrandr bspwm sxhkd \
-rxvt-unicode w3m unrar qt4 mupdf p7zip pcmanfs gvbam ntp cheese deluge \
-i3lock-blur megasync steam pulseaudio redshift
+sudo pacman -S vim wget git net-tools nmap htop nitrogen profont python \
+    ranger tcpdump tcpreplay scrot screenfetch unzip unrar tree tmux cmus \
+    xf86-video-intel xorg-server xorg-xinit xorg-xrandr bspwm sxhkd \
+    dmenu firefox vlc wireshark-cli wireshark-qt mupdf p7zip \
+    pulseaudio deluge gvbam i3lock python-pip startup-notification \
+    rxvt-unicode-terminfo rsync gconf gtk2 streamlink libxss
 
-# yaourt (if you wanna be a noob)
-# mkdir -p ~/tmp/AUR && cd $_
-# wget https://aur.archlinux.org/cgit/aur.git/snapshot/package-query.tar.gz
-# tar xfz package-query.tar.gz  # unpack tarball
-# cd package-query  &&  makepkg  # cd and create package from source
-# sudo pacman -U package-query*.pkg.tar.xz
-# cd ~/tmp/AUR
-# wget https://aur.archlinux.org/cgit/aur.git/snapshot/yaourt.tar.gz
-# tar xzf yaourt.tar.gz
-# cd yaourt && makepkg
-# sudo pacman -U yaourt*.pkg.tar.xz
+# audio
+pulseaudio --start
 
-# pip spam
-sudo pip install psutil livestreamer requests pygments
-
-# AUR
-mkdir -p ~/tmp/AUR
-pushd ~/tmp/AUR
-
-# lemonbar-git
-wget https://aur.archlinux.org/cgit/aur.git/snapshot/lemonbar-git.tar.gz
-tar xfz lemonbar-git.tar.gz
-pushd lemonbar-git
+# urxvt (terminal)
+mkdir ~/aur
+cd ~/aur
+wget https://aur.archlinux.org/cgit/aur.git/snapshot/rxvt-unicode-patched.tar.gz
+tar xzvf rxvt-unicode-patched.tar.gz
+cd rxvt-unicode-patched
 makepkg
-sudo pacman -U lemonar-git*.pkg.tar.xz
-popd
-
-# atom
-wget https://aur.archlinux.org/cgit/aur.git/snapshot/atom-editor.tar.gz
-tar xfz atom-editor.tar.gz
-pushd atom-editor
-makepkg
-sudo pacman -U atom-edutor*.pkg.tar.xz
-popd
-
-# spotify
-wget https://aur.archlinux.org/cgit/aur.git/snapshot/spotify.tar.gz
-tar xfz spotify.tar.gz
-pushd spotify
-makepkg
-sudo pacman -U spotify*.pkg.tar.xz
-popd
-
-# slack
-wget https://aur.archlinux.org/cgit/aur.git/snapshot/slack-desktop.tar.gz
-tar xfz slack-desktop.tar.gz
-pushd slack-desktop
-makepkg
-sudo pacman -U slack-desktop*.pkg.tar.xz
-popd
-
-# megasync
-wget https://aur.archlinux.org/cgit/aur.git/snapshot/megasync.tar.gz
-tar xfz megasync.tar.gz
-pushd megasync
-makepkg
-sudo pacman -U megasync*.pkg.tar.xz
-popd
-
-# end AUR
-popd
+sudo pacman -U rxvt-unicode-patched-*.pkg.tar.xz
 
 # dotfiles
+mkdir ~/code
+cd ~/code
 git clone https://github.com/vesche/dotfiles
-cp dotfiles/{.Xresources, .bar.py, .bash_profile, .bashrc, .vimrc, .xinitrc} ~/
-cp -R dotfiles/.config ~/
+cp dotfiles/{.Xresources, .bashrc, .vimrc, .xinitrc} ~/
+cp -r dotfiles/.config ~/
+
+# let's go
+startx
+
+# ~~~ additional stuff ~~~
+
+# aur packages
+# spotify, megasync, discord, vscode, streamlink-gui
 
 # firefox add-ons: imagus, ublock, stylish
 # stylish themes: github, hacker news, reddit, stackoverflow, wikipedia
