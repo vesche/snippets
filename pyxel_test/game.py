@@ -42,10 +42,11 @@ class App:
         if pyxel.btn(pyxel.KEY_DOWN):
             self.player_y = clamp(self.player_y + self.speed)
 
+        # pick up an apple if close enough
         for location in self.random_locations:
             delta_x, delta_y = tuple(abs(i-j) for i, j in \
                 zip((self.player_x, self.player_y), location))
-            
+
             if delta_x < 10 and delta_y < 10:
                 self.score += 10
                 self.eating = True
