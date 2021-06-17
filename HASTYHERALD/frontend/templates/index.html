@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div class="container">
+    {% for agent_name, agent_data in agents.items() %}
+    <a href="agent/{{ agent_name }}">
+        <div class="box">
+            <center>
+                <br><br>
+                Name: {{ agent_name }}
+                <br>
+                IP: {{ agent_data['ip'] }}
+                <br>
+                Port: {{ agent_data['port'] }}
+            </center>
+        </div>
+    </a>
+    {% endfor %}
+</div>
+
+{% endblock %}

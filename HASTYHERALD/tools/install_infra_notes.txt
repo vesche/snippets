@@ -1,0 +1,9 @@
+
+
+Linux server:
+- packages: sudo apt-get install python3 python3-pip redis
+- drop systemd service file
+
+Windows agent:
+OpenSSH
+Add to PATH for pip local: C:\\Users\\<user>\\AppData\\Roaming\\Python\\Python37\\Scripts\\

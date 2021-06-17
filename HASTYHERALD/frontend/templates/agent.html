@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+{% for tool in tools %}
+<iframe name="dummyframe" id="dummyframe" style="display: none;"></iframe>
+<img src="{{ url_for('static', filename=tool+'.png') }}" />
+<form action="/run/{{ agent_name }}/{{ tool }}" method="GET" target="dummyframe">
+    <button type="submit" name="run" value="{{ tool }}">{{ tool }}</button>
+</form>
+{% endfor %}
+
+{% endblock %}

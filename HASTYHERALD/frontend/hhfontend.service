@@ -1,0 +1,13 @@
+[Unit]
+Description=hhfrontend
+After=network.target
+
+[Service]
+User=user
+Group=user
+ExecStart=/usr/bin/python3 /home/user/frontend/main.py
+KillMode=process
+WorkingDirectory=/home/user/frontend
+
+[Install]
+WantedBy=multi-user.target

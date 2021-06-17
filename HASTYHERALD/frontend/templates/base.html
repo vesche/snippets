@@ -1,0 +1,11 @@
+<html>
+    <head>
+        <title>hhfrontend</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <img src="{{ url_for('static', filename='logo.png') }}" />
+        <br>
+        {% block body %}{% endblock %}
+    </body>
+</html>
