@@ -1,0 +1,13 @@
+[Unit]
+Description=btserver
+After=network.target auditd.service
+
+[Service]
+Type=simple
+User=vesche
+Group=vesche
+ExecStart=/usr/bin/python3.7 /home/vesche/baetv/btserver/main.py
+KillMode=process
+
+[Install]
+WantedBy=multi-user.target
